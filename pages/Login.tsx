@@ -7,6 +7,9 @@ import Link from "next/link";
 
 const Login = () => {
   const router = useRouter();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   const handleBackButtonClick = () => {
     router.back();
   };
@@ -34,11 +37,11 @@ const Login = () => {
       <>
         <h1 style={{ fontSize: '4.5rem', marginBottom: '0.1rem', paddingRight: '1%' }}>Swappify</h1>
         <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
-          Sign in with Google and start swapping your products
+          Sign in with Google and Continue swapping your products
         </h3>
         <Button size="md"
           style={{
-            backgroundColor: '#3b3636',
+            backgroundColor: '#1f1f1f',
             margin: '1rem',
             transition: 'background-color 0.3s'
           }}>

@@ -2,8 +2,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Container, Text, Button, Grid, Col } from '@nextui-org/react';
+import InfoCard from '../components/InfoCard';
+import { useRouter } from 'next/router';
 
 const Home = () => {
+  const router = useRouter();
+
+  const joinNow = () => {
+    return router.push('/Login')
+  }
+
   return (
     <Container>
       {/* Jumbotron */}
@@ -11,7 +19,7 @@ const Home = () => {
         <Grid xs={12} sm={6} alignItems="center">
           <Col css={{"width": "100%"}}>
             <Text weight={"bold"} size={70} css={{"textAlign": "center"}}>Swappify Your Gear, Simplify Your Sphere!</Text>
-            <Button size="md" shadow color="gradient" css={{"width": "100%", "marginTop": "10px"}}>Join For Free</Button>
+            <Button size="md" shadow color="gradient" css={{"width": "100%", "marginTop": "10px"}} onClick={joinNow}>Join For Free</Button>
           </Col>
         </Grid>
       </Grid.Container>

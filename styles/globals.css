@@ -15,6 +15,28 @@ a {
   box-sizing: border-box;
 }
 
+/* Width */
+::-webkit-scrollbar {
+  width: 0px; /* Adjust the width as needed */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: inherit; /* Light background color */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3b3b3b; /* Color of the scrollbar handle */
+  border-radius: 4px; /* Rounded corners for the handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1b1b1b; /* Color when hovered */
+}
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -117,7 +117,7 @@ const NavBar = () => {
           {/* <AvatarComp /> */}
 
           <Navbar.Item
-            onClick={() => setIsActive('Home')}
+            hideIn="xs"
           >
             <Link
             href={{
@@ -127,8 +127,6 @@ const NavBar = () => {
             </Link>
           </Navbar.Item>
           <Navbar.Item
-            isActive={isActive === 'SignUp' ? true : false}
-            onClick={() => setIsActive('SignUp')}
           >
             <Button auto flat onClick={navigateToSignUp}>
               Sign Up
