@@ -1,18 +1,19 @@
 import { Navbar, Button, Input } from '@nextui-org/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchIcon from './SearchIcon';
 import { SwappifyLogo } from './SwappifyLogo';
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import AvatarComp from "./AvatarComp";
+import { getSession, useSession } from 'next-auth/react';
 
 
 
 const NavBar = () => { 
   const [searchQuery, setSearchQuery] = useState('');
   const [isActive, setIsActive] = useState('Home');
-
   const router = useRouter();
+  const { data: session } = useSession();
 
   const navigateToSignUp = () => {
     router.push('/SignUp');
@@ -114,9 +115,11 @@ const NavBar = () => {
               placeholder="Search..."
             />
           </Navbar.Item>
-          {/* <AvatarComp /> */}
-
-          <Navbar.Item
+          {session ? (<>
+             <AvatarComp />
+          </>) : (
+            <>
+            <Navbar.Item
             hideIn="xs"
           >
             <Link
@@ -131,7 +134,9 @@ const NavBar = () => {
             <Button auto flat onClick={navigateToSignUp}>
               Sign Up
             </Button>
-          </Navbar.Item>
+        </Navbar.Item>
+      </>
+          )}
           
 
         </Navbar.Content>

@@ -3,12 +3,17 @@ import Image from 'next/image';
 import { Button, Divider, Input, Spacer, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
-
+import { signIn, useSession } from 'next-auth/react';
 
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const { data: session } = useSession();
+
+  if (session) {
+    router.push('/');
+  }
 
   const handleBackButtonClick = () => {
     router.back();
@@ -39,12 +44,11 @@ const Login = () => {
         <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
           Sign in with Google and Continue swapping your products
         </h3>
-        <Button size="md"
-          style={{
-            backgroundColor: '#1f1f1f',
-            margin: '1rem',
-            transition: 'background-color 0.3s'
-          }}>
+        <Button
+          size="md"
+          className='googleButton'
+          onClick={()=> signIn('google')}
+        >
           <Image src="/images/google-logo-6278331_1280.webp" alt="Google Logo" height="20px" width="20px" style={{ margin: '10px' }} />
           <span style={{ marginLeft: '0.3rem', fontSize: '1rem' }}>Continue with Google</span>
         </Button>

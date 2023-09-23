@@ -4,12 +4,21 @@ import styles from '../styles/Home.module.css'
 import { Container, Text, Button, Grid, Col } from '@nextui-org/react';
 import InfoCard from '../components/InfoCard';
 import { useRouter } from 'next/router';
+import { getSession, useSession } from 'next-auth/react';
+
 
 const Home = () => {
   const router = useRouter();
+  // const session = getSession();
+  const { data: session } = useSession();  
 
-  const joinNow = () => {
-    return router.push('/Login')
+  console.log(session);
+  const ActionButton = () => {
+    if (!session) {
+      return router.push('/Login')
+    } else {
+      return router.push('/Swapping')
+    }
   }
 
   return (
@@ -19,7 +28,10 @@ const Home = () => {
         <Grid xs={12} sm={6} alignItems="center">
           <Col css={{"width": "100%"}}>
             <Text weight={"bold"} size={70} css={{"textAlign": "center"}}>Swappify Your Gear, Simplify Your Sphere!</Text>
-            <Button size="md" shadow color="gradient" css={{"width": "100%", "marginTop": "10px"}} onClick={joinNow}>Join For Free</Button>
+            <Button size="md" shadow color="gradient" css={{ "width": "100%", "marginTop": "10px", fontSize: '1.1rem' }}
+              onClick={ActionButton}>
+              {session ? 'Lets start Swapping' : 'Join For Free'}
+            </Button>
           </Col>
         </Grid>
       </Grid.Container>

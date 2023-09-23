@@ -1,7 +1,10 @@
 import React from "react";
 import { Avatar, Dropdown, Navbar, Text } from "@nextui-org/react";
+import { signOut, useSession } from "next-auth/react";
 
 const AvatarComp = () => {
+  const { data: session } = useSession();
+
     return (
         <Dropdown placement="bottom-right">
             <Navbar.Item>
@@ -9,10 +12,10 @@ const AvatarComp = () => {
                 <Avatar
                   bordered
                   as="button"
-                  color="primary"
+                  color="gradient"
                   size="md"
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                />
+                  src={session?.user?.image || "https://freesvg.org/img/primary-abentry.png"}
+            />
               </Dropdown.Trigger>
             </Navbar.Item>
             <Dropdown.Menu
@@ -25,7 +28,7 @@ const AvatarComp = () => {
                   Signed in as
                 </Text>
                 <Text b color="inherit" css={{ d: "flex" }}>
-                  zoey@example.com
+                  {session?.user?.email}
                 </Text>
               </Dropdown.Item>
               <Dropdown.Item key="WishList" withDivider>
@@ -40,7 +43,19 @@ const AvatarComp = () => {
                 Recommended Items
               </Dropdown.Item>
               <Dropdown.Item key="logout" withDivider color="error">
-                Log Out
+            <button
+              type="button"
+              style={{
+              width: "100%",
+              background: "transparent",
+              border: "none",
+              textAlign: "left",
+              cursor: 'pointer'
+            }}
+              onClick={()=>signOut()}
+            >
+              Log Out
+            </button>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

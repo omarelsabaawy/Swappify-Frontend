@@ -46,3 +46,13 @@ a {
     background: black;
   }
 }
+
+.googleButton {
+  background-color: #0f0f0f;
+  margin: '1rem';
+  transition: 'background-color 0.3s';
+}
+
+.googleButton:hover {
+  background-color: #13131381;
+}
