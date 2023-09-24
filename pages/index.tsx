@@ -15,7 +15,7 @@ const Home = () => {
   console.log(session);
   const ActionButton = () => {
     if (!session) {
-      return router.push('/Login')
+      return router.push('/SignUp')
     } else {
       return router.push('/Swapping')
     }

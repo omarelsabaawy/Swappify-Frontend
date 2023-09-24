@@ -47,7 +47,7 @@ const Login = () => {
         <Button
           size="md"
           className='googleButton'
-          onClick={()=> signIn('google')}
+          onPress={()=> signIn('google')}
         >
           <Image src="/images/google-logo-6278331_1280.webp" alt="Google Logo" height="20px" width="20px" style={{ margin: '10px' }} />
           <span style={{ marginLeft: '0.3rem', fontSize: '1rem' }}>Continue with Google</span>
