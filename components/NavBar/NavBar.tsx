@@ -1,3 +1,5 @@
+"use client"
+
 import { Navbar, Button, Input } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import SearchIcon from './SearchIcon';
@@ -6,8 +8,6 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import AvatarComp from "./AvatarComp";
 import { getSession, useSession } from 'next-auth/react';
-
-
 
 const NavBar = () => { 
   const [searchQuery, setSearchQuery] = useState('');

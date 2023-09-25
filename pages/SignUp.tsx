@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { Button, Divider, Input, Spacer, Text } from '@nextui-org/react';
