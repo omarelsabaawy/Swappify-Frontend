@@ -830,6 +830,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-responsive-masonry@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@types/react-responsive-masonry/-/react-responsive-masonry-2.1.1.tgz"
+  integrity sha512-sFzNsxYugWO8G4d3ObhpcJCiqiYthWp9Udr9phDzy5BYxW78uMF8yK2IJ8+7bQLbmQz2xaIey1ZogbW3ATIo+A==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@18.0.21":
   version "18.0.21"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.0.21.tgz"
@@ -2179,7 +2186,17 @@ react-is@^16.13.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-"react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^17.0.2 || ^18", "react@^17.0.2 || ^18.0.0-0", react@^18.2.0, "react@>= 16.3.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16.8.0, react@18.2.0:
+react-layout-masonry@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/react-layout-masonry/-/react-layout-masonry-1.1.0.tgz"
+  integrity sha512-EVDj8ICCKiZIYAfdZZyuIHzYTTXcwWdLr9B6IB+vKBa39tpIjoTIhpgcLsxurrYy3+le6JXTsQIduS2/8MpmFQ==
+
+react-responsive-masonry@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.npmjs.org/react-responsive-masonry/-/react-responsive-masonry-2.1.7.tgz"
+  integrity sha512-/jOqnTVNtO8zRJMTl6ZXBex7EFYEIFBLVlkIFjiCT7omfm0CgNF2z4ST8RIr0v2ut15NWAQs7Q3kJJPhMoe3Ew==
+
+"react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^17.0.2 || ^18", "react@^17.0.2 || ^18.0.0-0", react@^18.0.0, react@^18.2.0, "react@>= 16.3.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16.8.0, react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
