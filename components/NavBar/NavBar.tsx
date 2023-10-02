@@ -22,7 +22,7 @@ const NavBar = () => {
     return (
         <Navbar isBordered variant="floating">
         <SwappifyLogo />
-        <Navbar.Content hideIn="xs" variant="highlight">  
+        <Navbar.Content hideIn="sm" variant="highlight">  
           <Navbar.Item
             isActive={isActive === 'Home' ? true : false}
             css={{
@@ -137,8 +137,6 @@ const NavBar = () => {
         </Navbar.Item>
       </>
           )}
-          
-
         </Navbar.Content>
       </Navbar>
     );

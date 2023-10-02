@@ -44,7 +44,7 @@ const SignUp = () => {
         </button>
         )}
       </div>
-      {session ? (
+      {/* {session ? (
         <>
           <h2 style={{
             marginBottom: '1.5rem',
@@ -80,7 +80,7 @@ const SignUp = () => {
           onClick={()=> router.push('/')}  
         >Continue</Button>
       </>
-      ): (
+      ): ( */}
           <>
         <h1 style={{ fontSize: '4.5rem', marginBottom: '0.1rem', paddingRight: '1%' }}>Swappify</h1>
         <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
@@ -89,7 +89,8 @@ const SignUp = () => {
         <Button
           className='googleButton'
           size="md"
-          onPress={()=> signIn('google')}
+              // onPress={()=> signIn('google')}
+          disabled
         >
           <Image src="/images/google-logo-6278331_1280.webp" alt="Google Logo" height="20px" width="20px" style={{ margin: '10px' }} />
           <span style={{ marginLeft: '0.3rem', fontSize: '1rem' }}>Continue with Google</span>
@@ -153,7 +154,7 @@ const SignUp = () => {
           </span>
         </Text>
       </>
-      )}
+      {/* )} */}
       
     </div>
   );

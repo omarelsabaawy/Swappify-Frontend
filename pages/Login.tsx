@@ -1,26 +1,16 @@
-"use client"
-
 import React from 'react';
 import Image from 'next/image';
 import { Button, Divider, Input, Spacer, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
-import { signIn, useSession } from 'next-auth/react';
 
 const Login = () => {
   const router = useRouter();
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const { data: session } = useSession();
-
-  if (session) {
-    router.push('/');
-  }
 
   const handleBackButtonClick = () => {
     router.back();
   };
-
+  
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
       <div style={{
@@ -49,7 +39,7 @@ const Login = () => {
         <Button
           size="md"
           className='googleButton'
-          onPress={()=> signIn('google')}
+          disabled
         >
           <Image src="/images/google-logo-6278331_1280.webp" alt="Google Logo" height="20px" width="20px" style={{ margin: '10px' }} />
           <span style={{ marginLeft: '0.3rem', fontSize: '1rem' }}>Continue with Google</span>
