@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button, Divider, Input, Spacer, Text } from '@nextui-org/react';
+import { Button, Divider, Input, Spacer, Text, Tooltip } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
 
@@ -36,14 +36,17 @@ const Login = () => {
         <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
           Sign in with Google and Continue swapping your products
         </h3>
-        <Button
-          size="md"
+        <Tooltip content={"Sorry Google Sign Up not working now."} rounded color="secondary" placement='right'>
+          <Button
           className='googleButton'
+          size="md"
+              // onPress={()=> signIn('google')}
           disabled
         >
           <Image src="/images/google-logo-6278331_1280.webp" alt="Google Logo" height="20px" width="20px" style={{ margin: '10px' }} />
           <span style={{ marginLeft: '0.3rem', fontSize: '1rem' }}>Continue with Google</span>
         </Button>
+        </Tooltip>
         <Divider style={{ width: '25%', margin: '1rem' }} />
         <h4 style={{
           fontSize: '1.4rem',
