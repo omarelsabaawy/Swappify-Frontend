@@ -122,7 +122,6 @@ const SignUp = () => {
           labelPlaceholder="Upload a Photo: (Max file size: 4MB)"
           width='350px'
           size="md"
-          value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
           style={{
             color: 'white',
