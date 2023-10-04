@@ -42,52 +42,6 @@ const Swapping = () => {
 
   return (
     <>   
-      
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      {/* Availability */}
-      <select style={{
-        marginRight: '10px',
-        padding: '5px', 
-      }}>
-        <option value="available">Availability</option>
-        <option value="available">Available</option>
-        <option value="notAvailable">Not Available</option>
-      </select>
-
-      {/* Price */}
-      <select style={{
-        marginRight: '10px',
-        padding: '5px', 
-      }}>
-        <option value="lowToHigh">Price: Low to High</option>
-        <option value="highToLow">Price: High to Low</option>
-      </select>
-
-      {/* Sort by */}
-      <select style={{
-        marginRight: '10px',
-        padding: '5px', 
-      }}>
-        <option value="featured">Sort by: Featured</option>
-        <option value="popular">Sort by: Popular</option>
-      </select>
-
-      {/* Apply Filter */}
-      <Button style={{
-          padding: '5px 10px',
-          backgroundColor: '#007BFF',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-        }}
-        >Apply Filter</Button>
-    </div>
-
       <Grid.Container gap={1.2} justify="space-between" style={{
         marginTop: '15px'
       }}>
