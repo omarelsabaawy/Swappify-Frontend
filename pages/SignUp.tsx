@@ -2,25 +2,42 @@
 
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { Avatar, Button, Divider, Input, Spacer, Text, Tooltip } from '@nextui-org/react';
+import { Avatar, Button, Divider, Input, Spacer, Spinner, Text, Tooltip } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
 import Logo from '../components/Logo';
+
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  geocodeByPlaceId,
+  getLatLng,
+} from 'react-places-autocomplete';
+import { AutoComplete } from 'primereact/autocomplete';
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 const SignUp = () => {
   const router = useRouter();
   const [email, setEmail] = React.useState<string | undefined>();
   const [password, setPassword] = React.useState<string | undefined>();
   const [location, setLocation] = React.useState<string | undefined>();
+  const [coordinates, setCoordinates] = React.useState<{ latitude?: number, longitude?: number }>({});
   const [phoneNumber, setPhoneNumber] = React.useState<string | undefined>();
-  const [avatar, setAvatar] = React.useState<string | null>(null);
-  
+  const [avatar, setAvatar] = React.useState<string | null>(null);  
 
   const handleBackButtonClick = () => {
     router.back();
   };
 
+  const handleSelect = async (value: any) => {
+    const results = await geocodeByAddress(value);
+    const latitudeLongitude = await getLatLng(results[0]);
+    const { lat: latitude, lng: longitude } = latitudeLongitude;
+    setLocation(value);
+    setCoordinates({ latitude, longitude });
+  }
+
   return (
+    
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '110vh' }}>
       <div style={{
         position: 'absolute',
@@ -42,7 +59,7 @@ const SignUp = () => {
       </div>
           <>
         <Logo />
-        <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '0.3rem' }}>
+        <h3 style={{ width: '70%', textAlign: 'center', marginBottom: '0.3rem' }}>
           {/* Sign Up with Google and start swapping your products */}
           Sign Up with Swappify and start swapping your Items
         </h3>
@@ -67,9 +84,11 @@ const SignUp = () => {
           bordered
           type='email'
           value={email}
+          onChange={(e)=>setEmail(e.target.value)}
           labelPlaceholder="Email"
           style={{
             width: '330px',
+            backgroundColor: 'inherit'
           }}
           size='md'
           required
@@ -80,6 +99,7 @@ const SignUp = () => {
           bordered
           type='password'
           value={password}
+          onChange={(e)=>setPassword(e.target.value)}
           labelPlaceholder="Password"
           style={{
             width: '330px'
@@ -93,6 +113,7 @@ const SignUp = () => {
           bordered
           type='tel'
           placeholder="Phone Number"
+          onChange={(e)=>setPhoneNumber(e.target.value)}
           value={phoneNumber}
           labelLeft="+1"
           style={{
@@ -102,18 +123,56 @@ const SignUp = () => {
           required
         />
         <Spacer y={1.6} />
-        <Input
-          clearable
-          bordered
-          type='text'
-          labelPlaceholder="Home Address"
+        <PlacesAutocomplete
           value={location}
-          style={{
-            width: '330px'
-          }}
-          size='md'
-          required
-        />
+          onChange={setLocation}
+          onSelect={handleSelect}
+        >
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            <div>
+              <Input
+                clearable
+                bordered
+                labelPlaceholder="Home Address"
+                {...getInputProps({
+                  placeholder: 'Search Places ...',
+                  className: 'location-search-input',
+                })}
+                style={{
+                  width: '330px'
+                }}
+                size='md'
+                required
+              />
+              <div className="autocomplete-dropdown-container" style={{
+                width: '350px',
+                position: 'static',
+              }}>
+                {loading && <ProgressSpinner style={{width: '30px', height: '30px', marginTop: '1rem'}} />}
+                {suggestions.map(suggestion => {
+                  const className = suggestion.active
+                    ? 'suggestion-item--active'
+                    : 'suggestion-item';
+                  // inline style for demonstration purpose
+                  const style = suggestion.active
+                    ? { backgroundColor: '#007BFF', cursor: 'pointer' }
+                    : { backgroundColor: '#000000', cursor: 'pointer' };
+                  return (
+                    // eslint-disable-next-line react/jsx-key
+                    <div
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                        style,
+                      })}
+                    >
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutocomplete>
         <Spacer y={1.6} />
         <Input
           clearable
@@ -128,7 +187,7 @@ const SignUp = () => {
             display: 'none'
           }}
         />
-        {avatar && <p>Image Uploaded.</p>}
+        {avatar && <p style={{fontSize:'12px', textAlign: 'end'}}>Image Uploaded.</p>}
         <Spacer y={1} />
         <Button
           type='submit'
