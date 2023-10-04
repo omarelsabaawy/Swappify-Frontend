@@ -2,16 +2,19 @@
 
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { Button, Divider, Input, Spacer, Text, Tooltip } from '@nextui-org/react';
+import { Avatar, Button, Divider, Input, Spacer, Text, Tooltip } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
 import Logo from '../components/Logo';
 
 const SignUp = () => {
   const router = useRouter();
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [location, setLocation] = React.useState("");
+  const [email, setEmail] = React.useState<string | undefined>();
+  const [password, setPassword] = React.useState<string | undefined>();
+  const [location, setLocation] = React.useState<string | undefined>();
+  const [phoneNumber, setPhoneNumber] = React.useState<string | undefined>();
+  const [avatar, setAvatar] = React.useState<string | null>(null);
+  
 
   const handleBackButtonClick = () => {
     router.back();
@@ -37,43 +40,6 @@ const SignUp = () => {
           </svg>
         </button>
       </div>
-      {/* {session ? (
-        <>
-          <h2 style={{
-            marginBottom: '1.5rem',
-            textAlign: 'center'
-          }}>Continue Signing Up with Swappify</h2>
-          <Spacer y={1} />
-        <Input
-          clearable
-          bordered
-          type='text'
-          labelPlaceholder="Username"
-          style={{
-            width: '330px',
-          }}
-          size='md'
-        />
-        <Spacer y={1.6} />
-        <Input
-          clearable
-          bordered
-          type='text'
-          labelPlaceholder="Home Address"
-          style={{
-            width: '330px'
-          }}
-          size='md'
-        />
-        <Spacer y={1.6} />
-        <Button
-          type='submit'
-          shadow
-          color="gradient"
-          onClick={()=> router.push('/')}  
-        >Continue</Button>
-      </>
-      ): ( */}
           <>
         <Logo />
         <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '0.3rem' }}>
@@ -100,22 +66,26 @@ const SignUp = () => {
           clearable
           bordered
           type='email'
+          value={email}
           labelPlaceholder="Email"
           style={{
             width: '330px',
           }}
           size='md'
+          required
         />
         <Spacer y={1.6} />
         <Input
           clearable
           bordered
           type='password'
+          value={password}
           labelPlaceholder="Password"
           style={{
             width: '330px'
           }}
           size='md'
+          required
         />
         <Spacer y={1.6} />
         <Input
@@ -123,11 +93,13 @@ const SignUp = () => {
           bordered
           type='tel'
           placeholder="Phone Number"
+          value={phoneNumber}
           labelLeft="+1"
           style={{
             width: '300px'
           }}
           size='md'
+          required
         />
         <Spacer y={1.6} />
         <Input
@@ -135,24 +107,29 @@ const SignUp = () => {
           bordered
           type='text'
           labelPlaceholder="Home Address"
+          value={location}
           style={{
             width: '330px'
           }}
           size='md'
+          required
         />
         <Spacer y={1.6} />
         <Input
           clearable
           bordered
           type="file"
-          labelLeft={
-            <>
-              <span style={{ fontWeight: 'bold' }}>Upload a Photo:</span> (Max file size: 4MB)
-            </>
-          }
+          labelPlaceholder="Upload a Photo: (Max file size: 4MB)"
           width='350px'
           size="md"
-        />        
+          value={avatar}
+          onChange={(e) => setAvatar(e.target.value)}
+          style={{
+            color: 'white',
+            display: 'none'
+          }}
+        />
+        {avatar && <p>Image Uploaded.</p>}
         <Spacer y={1} />
         <Button
           type='submit'

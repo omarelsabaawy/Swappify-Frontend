@@ -62,6 +62,7 @@ const Login = () => {
             width: '330px',
           }}
           size='md'
+          required
         />
         <Spacer y={1.6} />
         <Input
@@ -73,6 +74,7 @@ const Login = () => {
             width: '330px'
           }}
           size='md'
+          required
         />
         <Spacer y={1} />
         <Button
