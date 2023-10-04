@@ -7,13 +7,11 @@ import { SwappifyLogo } from './SwappifyLogo';
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import AvatarComp from "./AvatarComp";
-import { getSession, useSession } from 'next-auth/react';
 
 const NavBar = () => { 
   const [searchQuery, setSearchQuery] = useState('');
   const [isActive, setIsActive] = useState('Home');
   const router = useRouter();
-  const { data: session } = useSession();
 
   const navigateToSignUp = () => {
     router.push('/SignUp');
@@ -127,9 +125,6 @@ const NavBar = () => {
             placeholder="Search..."
           />
         </Navbar.Item>
-        {session ? (<>
-            <AvatarComp />
-        </>) : (
           <>
           <Navbar.Item
           hideIn="xs"
@@ -148,7 +143,6 @@ const NavBar = () => {
           </Button>
       </Navbar.Item>
     </>
-        )}
       </Navbar.Content>
       <Navbar.Collapse>
         <Navbar.CollapseItem

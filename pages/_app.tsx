@@ -3,7 +3,6 @@ import type { AppProps } from 'next/app'
 import { NextUIProvider, createTheme} from '@nextui-org/react';
 import Layout from './layout';
 import { useRouter } from 'next/router';
-import { SessionProvider } from 'next-auth/react';
 import { PrimeReactProvider } from 'primereact/api';
 
 interface CustomPageProps extends AppProps {
@@ -22,7 +21,6 @@ function MyApp({ Component, pageProps }: CustomPageProps) {
   return (
     <NextUIProvider theme={darkTheme}>
       <PrimeReactProvider>
-        <SessionProvider session={pageProps?.session}>
             {showNavBar ? (
             <Component {...pageProps} />
           ) : (
@@ -30,7 +28,6 @@ function MyApp({ Component, pageProps }: CustomPageProps) {
             <Component {...pageProps} />
           </Layout>
               )}
-        </SessionProvider>
       </PrimeReactProvider>
     </NextUIProvider>
   )
