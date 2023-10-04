@@ -1,9 +1,5 @@
 import React from 'react';
-import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-import { Card4 } from '../components/Cards/Card4';
-import { Badge, Button, Card, Col, Grid, Row, Text } from "@nextui-org/react";
-
-
+import { Badge, Button, Card, Col, Container, Grid, Row, Text } from "@nextui-org/react";
 
 const Swapping = () => {
     const list = [
@@ -45,9 +41,57 @@ const Swapping = () => {
   ];
 
   return (
-      <Grid.Container gap={3} justify="space-between" style={{
-        marginTop: '5px'
-    }}>
+    <>   
+      
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      {/* Availability */}
+      <select style={{
+        marginRight: '10px',
+        padding: '5px', 
+      }}>
+        <option value="available">Availability</option>
+        <option value="available">Available</option>
+        <option value="notAvailable">Not Available</option>
+      </select>
+
+      {/* Price */}
+      <select style={{
+        marginRight: '10px',
+        padding: '5px', 
+      }}>
+        <option value="lowToHigh">Price: Low to High</option>
+        <option value="highToLow">Price: High to Low</option>
+      </select>
+
+      {/* Sort by */}
+      <select style={{
+        marginRight: '10px',
+        padding: '5px', 
+      }}>
+        <option value="featured">Sort by: Featured</option>
+        <option value="popular">Sort by: Popular</option>
+      </select>
+
+      {/* Apply Filter */}
+      <Button style={{
+          padding: '5px 10px',
+          backgroundColor: '#007BFF',
+          color: 'white',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer',
+        }}
+        >Apply Filter</Button>
+    </div>
+
+      <Grid.Container gap={1.2} justify="space-between" style={{
+        marginTop: '15px'
+      }}>
+
       {list.map((item, index) => (
         <Grid xs={6} sm={3} key={index}>
             <Card css={{ w: "100%", h: "400px" }} isPressable isHoverable >
@@ -106,6 +150,7 @@ const Swapping = () => {
         </Grid>
       ))}
     </Grid.Container>
+    </>    
   );
 };
 

@@ -29,7 +29,9 @@ const Home = () => {
       <Grid.Container justify="center" css={{"height": "500px"}}>
         <Grid xs={12} sm={6} alignItems="center">
           <Col css={{"width": "100%"}}>
-            <Text weight={"bold"} size={70} css={{"textAlign": "center"}}>Swappify Your Gear, Simplify Your Sphere!</Text>
+            <Text weight={"bold"} size={70} css={{ "textAlign": "center", textGradient: "45deg, $blue600 -20%, $pink600 50%",}}>Swappify Your Gear,</Text>
+            <Text weight={"bold"} size={70} css={{ "textAlign": "center", textGradient: "45deg, $purple600 -20%, $pink600 100%",}}>Simplify Your </Text>
+            <Text weight={"bold"} size={70} css={{ "textAlign": "center", textGradient: "45deg, $yellow600 -20%, $red600 100%",}}>Sphere!</Text>
             <Button size="md" shadow color="gradient" css={{ "width": "100%", "marginTop": "10px", fontSize: '1.1rem' }}
               onClick={ActionButton}>
               {session ? 'Lets start Swapping' : 'Join For Free'}

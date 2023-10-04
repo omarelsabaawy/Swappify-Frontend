@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Button, Divider, Input, Spacer, Text, Tooltip } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
+import Logo from '../components/Logo';
 
 const Login = () => {
   const router = useRouter();
@@ -32,7 +33,7 @@ const Login = () => {
         </button>
       </div>
       <>
-        <h1 style={{ fontSize: '4.5rem', marginBottom: '0.1rem', paddingRight: '1%' }}>Swappify</h1>
+        <Logo />
         <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
           Sign in with Google and Continue swapping your products
         </h3>

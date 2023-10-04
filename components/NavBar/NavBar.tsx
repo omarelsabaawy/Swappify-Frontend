@@ -46,7 +46,7 @@ const NavBar = () => {
           <Navbar.Item
           variant="highlight-rounded"
             isActive={isActive === 'Home' ? true : false}
-            activeColor="secondary"
+            activeColor="primary"
             css={{
               paddingTop: '$5'
           }}
@@ -63,7 +63,7 @@ const NavBar = () => {
           <Navbar.Item
           variant="highlight-rounded"
             isActive={isActive === 'Swapping' ? true : false}
-            activeColor="secondary"
+            activeColor="primary"
             css={{
               paddingTop: '$5'
             }}
@@ -79,7 +79,7 @@ const NavBar = () => {
           <Navbar.Item
           variant="highlight-rounded"
             isActive={isActive === 'Buying' ? true : false}
-            activeColor="secondary"
+            activeColor="primary"
               css={{
                 paddingTop: '$5'
               }}
@@ -94,7 +94,7 @@ const NavBar = () => {
           <Navbar.Item
           variant="highlight-rounded"
             isActive={isActive === 'Contact Us' ? true : false}
-            activeColor="secondary"
+            activeColor="primary"
             css={{
               paddingTop: '$5'
             }}
@@ -169,7 +169,7 @@ const NavBar = () => {
         <Navbar.Collapse>
           <Navbar.CollapseItem
           isActive={isActive === 'Home' ? true : false}
-          activeColor="secondary"
+          activeColor="primary"
             css={{
               paddingTop: '$5'
           }}
@@ -185,7 +185,7 @@ const NavBar = () => {
           </Navbar.CollapseItem>
           <Navbar.CollapseItem
           isActive={isActive === 'Swapping' ? true : false}
-          activeColor="secondary"
+          activeColor="primary"
               css={{
                 paddingTop: '$5'
               }}
@@ -201,7 +201,7 @@ const NavBar = () => {
           </Navbar.CollapseItem>
           <Navbar.CollapseItem
           isActive={isActive === 'Buying' ? true : false}
-          activeColor="secondary"
+          activeColor="primary"
               css={{
                 paddingTop: '$5'
               }}
@@ -217,7 +217,7 @@ const NavBar = () => {
           </Navbar.CollapseItem>
           <Navbar.CollapseItem
             isActive={isActive === 'Contact Us' ? true : false}
-            activeColor="secondary"
+            activeColor="primary"
             css={{
               paddingTop: '$5'
             }}
