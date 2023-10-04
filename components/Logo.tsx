@@ -8,9 +8,9 @@ function Logo() {
     >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="300"
+      width="290"
       height="80"
-      viewBox="0 0 300 80"
+      viewBox="0 0 290 80"
       style={{
         width: '3xl', // You may need to define a specific width here based on your design requirements
         height: 'auto',

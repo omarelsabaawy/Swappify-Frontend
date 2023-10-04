@@ -59,7 +59,7 @@ const SignUp = () => {
       </div>
           <>
         <Logo />
-        <h3 style={{ width: '70%', textAlign: 'center', marginBottom: '0.3rem' }}>
+        <h3 style={{ width: '100%', textAlign: 'center', marginBottom: '0.3rem' }}>
           {/* Sign Up with Google and start swapping your products */}
           Sign Up with Swappify and start swapping your Items
         </h3>
@@ -74,7 +74,9 @@ const SignUp = () => {
           <span style={{ marginLeft: '0.3rem', fontSize: '1rem' }}>Continue with Google</span>
         </Button>
         </Tooltip> */}
-        <Divider style={{ width: '50%', margin: '1rem' }} />
+        <Divider css={{ 
+          width: '50%', margin: '1rem',
+         }} />
         <h4 style={{
           fontSize: '1.4rem',
           marginBottom: '1rem'
