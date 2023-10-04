@@ -76,11 +76,11 @@ const SignUp = () => {
       ): ( */}
           <>
         <Logo />
-        <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
+        <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '0.3rem' }}>
           {/* Sign Up with Google and start swapping your products */}
-          Sign Up with Google and start swapping your products
+          Sign Up with Swappify and start swapping your Items
         </h3>
-        <Tooltip content={"Sorry Google Sign Up not working now."} rounded color="secondary" placement='right'>
+        {/* <Tooltip content={"Sorry Google Sign Up not working now."} rounded color="secondary" placement='right'>
           <Button
           className='googleButton'
           size="md"
@@ -90,12 +90,12 @@ const SignUp = () => {
           <Image src="/images/google-logo-6278331_1280.webp" alt="Google Logo" height="20px" width="20px" style={{ margin: '10px' }} />
           <span style={{ marginLeft: '0.3rem', fontSize: '1rem' }}>Continue with Google</span>
         </Button>
-        </Tooltip>
-        <Divider style={{ width: '25%', margin: '1rem' }} />
+        </Tooltip> */}
+        <Divider style={{ width: '50%', margin: '1rem' }} />
         <h4 style={{
           fontSize: '1.4rem',
-          marginBottom: '1.5rem'
-        }}>Or Sign Up with your Email</h4>
+          marginBottom: '1rem'
+        }}></h4>
         <Input
           clearable
           bordered
@@ -121,6 +121,18 @@ const SignUp = () => {
         <Input
           clearable
           bordered
+          type='tel'
+          placeholder="Phone Number"
+          labelLeft="+1"
+          style={{
+            width: '300px'
+          }}
+          size='md'
+        />
+        <Spacer y={1.6} />
+        <Input
+          clearable
+          bordered
           type='text'
           labelPlaceholder="Home Address"
           style={{
@@ -128,6 +140,19 @@ const SignUp = () => {
           }}
           size='md'
         />
+        <Spacer y={1.6} />
+        <Input
+          clearable
+          bordered
+          type="file"
+          labelLeft={
+            <>
+              <span style={{ fontWeight: 'bold' }}>Upload a Photo:</span> (Max file size: 4MB)
+            </>
+          }
+          width='350px'
+          size="md"
+        />        
         <Spacer y={1} />
         <Button
           type='submit'

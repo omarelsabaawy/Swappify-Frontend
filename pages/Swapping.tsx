@@ -54,9 +54,9 @@ const Swapping = () => {
                        <Badge enableShadow variant="bordered" color="primary">
                           New
                         </Badge>
-                        {/* <Text h3 color="gradient">
+                        <Text h3 color="gradient">
                         {item.title}
-                        </Text> */}
+                        </Text>
                     </Col>
                 </Card.Header>
                 <Card.Body css={{ p: 0 }}>
@@ -80,8 +80,11 @@ const Swapping = () => {
                 >
                 <Row>
                     <Col>
-                    <Text color="black" size={14}>
-                        {item.title}
+                    <Text color="black" size={13}>
+                        Available
+                  </Text>
+                  <Text color="black" size={12}>
+                        Swap
                     </Text>
                     </Col>
                     <Col>
@@ -93,7 +96,7 @@ const Swapping = () => {
                             weight="bold"
                             transform="uppercase"
                         >
-                            Swap Now
+                            Buy Now
                         </Text>
                         </Button>
                     </Row>

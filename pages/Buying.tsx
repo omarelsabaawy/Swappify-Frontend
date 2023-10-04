@@ -1,9 +1,5 @@
 import React from 'react';
-import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-import { Card4 } from '../components/Cards/Card4';
 import { Badge, Button, Card, Col, Grid, Row, Text } from "@nextui-org/react";
-
-
 
 const Buying = () => {
     const list = [
@@ -45,8 +41,8 @@ const Buying = () => {
   ];
 
   return (
-      <Grid.Container gap={3} justify="space-between" style={{
-        marginTop: '5px'
+      <Grid.Container gap={1.2} justify="space-between" style={{
+        marginTop: '15px'
     }}>
       {list.map((item, index) => (
         <Grid xs={6} sm={3} key={index}>
@@ -56,9 +52,9 @@ const Buying = () => {
                        <Badge enableShadow variant="bordered" color="primary">
                           New
                         </Badge>
-                        {/* <Text h3 color="gradient">
+                        <Text h3 color="gradient">
                         {item.title}
-                        </Text> */}
+                        </Text>
                     </Col>
                 </Card.Header>
                 <Card.Body css={{ p: 0 }}>
@@ -82,8 +78,11 @@ const Buying = () => {
                 >
                 <Row>
                     <Col>
-                    <Text color="black" size={14}>
-                        {item.title}
+                    <Text color="black" size={13}>
+                        Available
+                  </Text>
+                  <Text color="black" size={12}>
+                        Swap
                     </Text>
                     </Col>
                     <Col>

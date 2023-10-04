@@ -35,9 +35,9 @@ const Login = () => {
       <>
         <Logo />
         <h3 style={{ width: '70%', textAlign: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
-          Sign in with Google and Continue swapping your products
+          Sign in with Swappify and Continue swapping your items
         </h3>
-        <Tooltip content={"Sorry Google Sign Up not working now."} rounded color="secondary" placement='right'>
+        {/* <Tooltip content={"Sorry Google Sign Up not working now."} rounded color="secondary" placement='right'>
           <Button
           className='googleButton'
           size="md"
@@ -47,12 +47,12 @@ const Login = () => {
           <Image src="/images/google-logo-6278331_1280.webp" alt="Google Logo" height="20px" width="20px" style={{ margin: '10px' }} />
           <span style={{ marginLeft: '0.3rem', fontSize: '1rem' }}>Continue with Google</span>
         </Button>
-        </Tooltip>
-        <Divider style={{ width: '25%', margin: '1rem' }} />
+        </Tooltip> */}
+        <Divider style={{ width: '50%', margin: '1rem' }} />
         <h4 style={{
           fontSize: '1.4rem',
           marginBottom: '1.7rem'
-        }}>Or Sign in with your Email</h4>
+        }}></h4>
         <Input
           clearable
           bordered
@@ -95,6 +95,22 @@ const Login = () => {
             </Link>
           </span>
         </Text>
+        <Spacer y={0.1} />
+        <Text
+          css={{
+            textDecoration: "underline",
+            color: "$primary"
+          }}
+        >
+          <Link
+              href={{
+              pathname: '/ForgetPassword'
+            }}
+          >
+              Forget Your Password?  
+          </Link>  
+        </Text>
+        
       </>
     </div>
   );

@@ -56,3 +56,60 @@ a {
 .googleButton:hover {
   background-color: #13131381;
 }
+
+
+    input[type="file"] {
+            display: none;
+        }
+
+        /* Custom file input container */
+        .file-input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 150px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        /* Text and icon */
+        .file-input-label {
+            text-align: center;
+            font-size: 16px;
+            color: #777;
+        }
+
+        .file-input-icon {
+            font-size: 24px;
+            color: #777;
+            margin-bottom: 8px;
+        }
+
+        /* Hover effect */
+        .file-input-container:hover {
+            border-color: #007bff;
+        }
+
+        /* Styling for selected file name */
+        .file-name {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Styling for file input */
+        input[type="file"]:focus + .file-input-container {
+            outline: 2px solid #007bff;
+        }
+
+        /* Hide default file input button */
+        input[type="file"]::-webkit-file-upload-button {
+            display: none;
+        }
