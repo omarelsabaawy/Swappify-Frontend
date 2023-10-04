@@ -34,7 +34,7 @@ const Login = () => {
       </div>
       <>
         <Logo />
-        <h3 style={{ width: '70%', textAlign: 'center', marginBottom: '1rem' }}>
+        <h3 style={{ width: '100%', textAlign: 'center', marginBottom: '1rem' }}>
           Sign in with Swappify and Continue swapping your items
         </h3>
         {/* <Tooltip content={"Sorry Google Sign Up not working now."} rounded color="secondary" placement='right'>
