@@ -15,7 +15,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>{CssBaseline.flush()}</Head>
-        <script async src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAP_API_KEY}&libraries=places`}></script>
+        <script async src={`https://maps.googleapis.com/maps/api/js?key=AIzaSyA2iVdhZTfKxj2QDRg9hLEbukp6RA1_Fz0&libraries=places`}></script>
         <body>
           <Main />
           <NextScript />
