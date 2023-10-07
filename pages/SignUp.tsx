@@ -1,28 +1,28 @@
 "use client"
 
 import React, { useEffect } from 'react';
-import Image from 'next/image';
-import { Avatar, Button, Divider, Input, Spacer, Spinner, Text, Tooltip } from '@nextui-org/react';
+import { Avatar, Button, Divider, Input, Loading, Progress, Spacer, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
 import Logo from '../components/Logo';
-
 import PlacesAutocomplete, {
   geocodeByAddress,
-  geocodeByPlaceId,
   getLatLng,
 } from 'react-places-autocomplete';
-import { AutoComplete } from 'primereact/autocomplete';
-import { ProgressSpinner } from 'primereact/progressspinner';
+import { UnLockIcon } from '../components/UnLockIcon';
+import { LockIcon } from '../components/LockIcon';
+import { setCookie } from 'cookies-next';
+
 
 const SignUp = () => {
   const router = useRouter();
-  const [email, setEmail] = React.useState<string | undefined>();
-  const [password, setPassword] = React.useState<string | undefined>();
-  const [location, setLocation] = React.useState<string | undefined>();
+  const [email, setEmail] = React.useState<string | undefined>("");
+  const [password, setPassword] = React.useState<string | undefined>("");
+  const [location, setLocation] = React.useState<string | undefined>("");
   const [coordinates, setCoordinates] = React.useState<{ latitude?: number, longitude?: number }>({});
-  const [phoneNumber, setPhoneNumber] = React.useState<string | undefined>();
+  const [phoneNumber, setPhoneNumber] = React.useState<string | undefined>("");
   const [avatar, setAvatar] = React.useState<string | null>(null);  
+  const [loading, setLoading] = React.useState<Boolean | undefined>(false);
 
   const handleBackButtonClick = () => {
     router.back();
@@ -36,9 +36,44 @@ const SignUp = () => {
     setCoordinates({ latitude, longitude });
   }
 
+  const handleSignUp = async () => {
+    setLoading(true);
+    const formData = {
+      email: email,
+      password: password,
+      phoneNumber: phoneNumber,
+      location: location,
+      longitude: coordinates.longitude,
+      latitude: coordinates.latitude,
+      avatar: "duplicate.jpg"
+    }
+    
+    try {
+      const response = await fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+      });
+      
+      const responseData = await response.json();
+      
+      if (response.ok) {
+        setLoading(false);
+        router.push('/');        
+      }
+
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+    }
+
+  }
+
   return (
     
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '110vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '120vh' }}>
       <div style={{
         position: 'absolute',
         top: '10px',
@@ -86,6 +121,7 @@ const SignUp = () => {
           bordered
           type='email'
           value={email}
+          aria-label="Email"
           onChange={(e)=>setEmail(e.target.value)}
           labelPlaceholder="Email"
           style={{
@@ -94,20 +130,25 @@ const SignUp = () => {
           }}
           size='md'
           required
+          color='secondary'
         />
         <Spacer y={1.6} />
-        <Input
+        <Input.Password
           clearable
           bordered
+          visibleIcon={<UnLockIcon fill="currentColor" />}
+          hiddenIcon={<LockIcon fill="currentColor" />}
           type='password'
           value={password}
+          aria-label="Password"
           onChange={(e)=>setPassword(e.target.value)}
           labelPlaceholder="Password"
           style={{
-            width: '330px'
+            width: '270px'
           }}
           size='md'
           required
+          color='secondary'
         />
         <Spacer y={1.6} />
         <Input
@@ -115,6 +156,7 @@ const SignUp = () => {
           bordered
           type='tel'
           placeholder="Phone Number"
+          aria-label="Phone Number"
           onChange={(e)=>setPhoneNumber(e.target.value)}
           value={phoneNumber}
           labelLeft="+1"
@@ -123,63 +165,67 @@ const SignUp = () => {
           }}
           size='md'
           required
+          color='secondary'
         />
         <Spacer y={1.6} />
         <PlacesAutocomplete
-          value={location}
-          onChange={setLocation}
-          onSelect={handleSelect}
-        >
-          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div>
-              <Input
-                clearable
+        value={location || ''}
+        onChange={setLocation}
+        onSelect={handleSelect}
+      >
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          <div>
+            <Input
+              clearable
                 bordered
-                labelPlaceholder="Home Address"
-                {...getInputProps({
-                  placeholder: 'Search Places ...',
-                  className: 'location-search-input',
-                })}
-                style={{
-                  width: '330px'
-                }}
-                size='md'
+                aria-label="Home Address"
+              labelPlaceholder="Home Address"
+              {...getInputProps({
+                placeholder: 'Search Places ...',
+                className: 'location-search-input',
+              })}
+              style={{
+                width: '330px'
+              }}
+              size='md'
                 required
-              />
-              <div className="autocomplete-dropdown-container" style={{
-                width: '350px',
-                position: 'static',
-              }}>
-                {loading && <ProgressSpinner style={{width: '30px', height: '30px', marginTop: '1rem'}} />}
-                {suggestions.map(suggestion => {
-                  const className = suggestion.active
-                    ? 'suggestion-item--active'
-                    : 'suggestion-item';
-                  // inline style for demonstration purpose
-                  const style = suggestion.active
-                    ? { backgroundColor: '#007BFF', cursor: 'pointer' }
-                    : { backgroundColor: '#000000', cursor: 'pointer' };
-                  return (
-                    // eslint-disable-next-line react/jsx-key
-                    <div
-                      {...getSuggestionItemProps(suggestion, {
-                        className,
-                        style,
-                      })}
-                    >
-                      <span>{suggestion.description}</span>
-                    </div>
-                  );
-                })}
-              </div>
+                color='secondary'
+            />
+            <div className="autocomplete-dropdown-container" style={{
+              width: '350px',
+              position: 'static',
+            }}>
+              {loading && <Loading size='sm' color="default" css={{ marginTop: '1rem'}}></Loading>}
+              {suggestions.map(suggestion => {
+                const className = suggestion.active
+                  ? 'suggestion-item--active'
+                  : 'suggestion-item';
+                // inline style for demonstration purpose
+                const style = suggestion.active
+                  ? { backgroundColor: '#007BFF', cursor: 'pointer' }
+                  : { backgroundColor: '#000000', cursor: 'pointer' };
+                return (
+                  <div
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                    key={suggestion.description}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
             </div>
-          )}
-        </PlacesAutocomplete>
+          </div>
+        )}
+      </PlacesAutocomplete>
         <Spacer y={1.6} />
         <Input
           clearable
           bordered
           type="file"
+          aria-label="File"
           labelPlaceholder="Upload a Photo: (Max file size: 4MB)"
           width='350px'
           size="md"
@@ -188,6 +234,8 @@ const SignUp = () => {
             color: 'white',
             display: 'none'
           }}
+          color='secondary'
+          required
         />
         {avatar && <p style={{fontSize:'12px', textAlign: 'end'}}>Image Uploaded.</p>}
         <Spacer y={1} />
@@ -195,7 +243,17 @@ const SignUp = () => {
           type='submit'
           shadow
           color="gradient"
-        >Sign Up</Button>
+          ghost={loading ? true : false}
+          onPress={handleSignUp}
+        >
+          {loading ? (
+            <Loading
+              size='sm'
+              type='points'
+              color="primary"
+            />
+          ) : ("Sign Up")}
+        </Button>
         <Spacer y={0.7} />
         <Text>
           Have an Account? &nbsp;

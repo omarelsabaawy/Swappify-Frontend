@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/Login.jsx", "pages/Login.jsx", "pages/Login.jsx", "components/EyeFilledIcon.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/Login.jsx", "pages/Login.jsx", "pages/Login.jsx", "components/EyeFilledIcon.jsx", "next.config.js", "next.config.js"],
   "exclude": ["node_modules"]
 }
