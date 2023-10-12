@@ -11,7 +11,7 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import { UnLockIcon } from '../components/UnLockIcon';
 import { LockIcon } from '../components/LockIcon';
-import { useUserContext } from './Context/UserContext';
+import { useUserContext } from '../Context/UserContext';
 import toast, {Toaster} from 'react-hot-toast';
 
 

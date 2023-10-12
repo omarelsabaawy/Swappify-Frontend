@@ -7,7 +7,7 @@ import { SwappifyLogo } from './SwappifyLogo';
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import AvatarComp from "./AvatarComp";
-import { useUserContext } from '../../pages/Context/UserContext';
+import { useUserContext } from '../../Context/UserContext';
 
 
 const NavBar = () => { 

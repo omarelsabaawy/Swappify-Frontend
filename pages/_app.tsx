@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import { NextUIProvider, createTheme} from '@nextui-org/react';
 import Layout from './layout';
 import { useRouter } from 'next/router';
-import { UserProvider } from './Context/UserContext';
+import { UserProvider } from '../Context/UserContext';
 
 interface CustomPageProps extends AppProps {
   pageProps: {

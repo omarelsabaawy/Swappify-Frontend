@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar, Dropdown, Navbar, Text } from "@nextui-org/react";
-import { useUserContext } from "../../pages/Context/UserContext";
+import { useUserContext } from "../../Context/UserContext";
 
 const AvatarComp = () => {
   const { user, clearUserAndToken } = useUserContext();
