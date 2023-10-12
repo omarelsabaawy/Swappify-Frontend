@@ -26,7 +26,7 @@ const SignUp = () => {
   
   const [requiredField, setRequiredField] = React.useState<Boolean | undefined>(false);
   
-  const { user, token, setUserAndToken } = useUserContext();
+  const { setUserAndToken } = useUserContext();
   
   const handleBackButtonClick = () => {
     router.back();
