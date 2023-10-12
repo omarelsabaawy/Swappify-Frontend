@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Avatar, Button, Divider, Input, Loading, Progress, Spacer, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
@@ -11,7 +11,8 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import { UnLockIcon } from '../components/UnLockIcon';
 import { LockIcon } from '../components/LockIcon';
-import { setCookie } from 'cookies-next';
+import { useUserContext } from './Context/UserContext';
+import toast, {Toaster} from 'react-hot-toast';
 
 
 const SignUp = () => {
@@ -21,9 +22,12 @@ const SignUp = () => {
   const [location, setLocation] = React.useState<string | undefined>("");
   const [coordinates, setCoordinates] = React.useState<{ latitude?: number, longitude?: number }>({});
   const [phoneNumber, setPhoneNumber] = React.useState<string | undefined>("");
-  const [avatar, setAvatar] = React.useState<string | null>(null);  
   const [loading, setLoading] = React.useState<Boolean | undefined>(false);
-
+  
+  const [requiredField, setRequiredField] = React.useState<Boolean | undefined>(false);
+  
+  const { user, token, setUserAndToken } = useUserContext();
+  
   const handleBackButtonClick = () => {
     router.back();
   };
@@ -38,17 +42,30 @@ const SignUp = () => {
 
   const handleSignUp = async () => {
     setLoading(true);
-    const formData = {
-      email: email,
-      password: password,
-      phoneNumber: phoneNumber,
-      location: location,
-      longitude: coordinates.longitude,
-      latitude: coordinates.latitude,
-      avatar: "duplicate.jpg"
+
+    if (!email || !password || !location || !phoneNumber) {
+      toast.error("Some Fields are required.", {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
+      setRequiredField(true);
+      setLoading(false);
     }
     
     try {
+      const formData = {
+        email: email,
+        password: password,
+        phoneNumber: phoneNumber,
+        location: location,
+        longitude: coordinates.longitude,
+        latitude: coordinates.latitude,
+        avatar: email ? email[0] : ""
+      }
+
       const response = await fetch('/api/register', {
       method: 'POST',
       headers: {
@@ -60,20 +77,44 @@ const SignUp = () => {
       const responseData = await response.json();
       
       if (response.ok) {
+
+        const user = {
+          id: responseData.id,
+          email: responseData.email,
+          location: responseData.location,
+          phoneNumber: responseData.phoneNumber,
+          avatar: responseData.email[0],
+          latitude: coordinates.latitude,
+          longitude: coordinates.longitude
+        };
+
+        setUserAndToken(user, responseData.access_token);
+
         setLoading(false);
-        router.push('/');        
+        
+        router.push('/');
+        
+      } else {
+        toast.error(responseData.message, {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
+        setLoading(false);
       }
 
     } catch (error) {
       setLoading(false);
-      console.error(error);
     }
 
   }
 
   return (
     
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '120vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+      <Toaster position='bottom-right' />
       <div style={{
         position: 'absolute',
         top: '10px',
@@ -131,6 +172,8 @@ const SignUp = () => {
           size='md'
           required
           color='secondary'
+          status={(requiredField && !email) ? 'error' : 'default'}
+          helperText={(requiredField && !email) ? 'Email is Required' : ''}
         />
         <Spacer y={1.6} />
         <Input.Password
@@ -149,6 +192,8 @@ const SignUp = () => {
           size='md'
           required
           color='secondary'
+          status={(requiredField && !password) ? 'error' : 'default'}
+          helperText={(requiredField && !password) ? 'Password is Required' : ''}
         />
         <Spacer y={1.6} />
         <Input
@@ -166,6 +211,8 @@ const SignUp = () => {
           size='md'
           required
           color='secondary'
+          status={(requiredField && !phoneNumber) ? 'error' : 'default'}
+          helperText={(requiredField && !phoneNumber) ? 'Phone number is Required' : ''}
         />
         <Spacer y={1.6} />
         <PlacesAutocomplete
@@ -190,6 +237,8 @@ const SignUp = () => {
               size='md'
                 required
                 color='secondary'
+                status={(requiredField && !location) ? 'error' : 'default'}
+                helperText={(requiredField && !location) ? 'Location is Required' : ''}
             />
             <div className="autocomplete-dropdown-container" style={{
               width: '350px',
@@ -220,39 +269,14 @@ const SignUp = () => {
           </div>
         )}
       </PlacesAutocomplete>
-        <Spacer y={1.6} />
-        <Input
-          clearable
-          bordered
-          type="file"
-          aria-label="File"
-          labelPlaceholder="Upload a Photo: (Max file size: 4MB)"
-          width='350px'
-          size="md"
-          onChange={(e) => setAvatar(e.target.value)}
-          style={{
-            color: 'white',
-            display: 'none'
-          }}
-          color='secondary'
-          required
-        />
-        {avatar && <p style={{fontSize:'12px', textAlign: 'end'}}>Image Uploaded.</p>}
         <Spacer y={1} />
-        <Button
-          type='submit'
-          shadow
+          <Button
+          type='button'
+          shadow 
           color="gradient"
-          ghost={loading ? true : false}
           onPress={handleSignUp}
         >
-          {loading ? (
-            <Loading
-              size='sm'
-              type='points'
-              color="primary"
-            />
-          ) : ("Sign Up")}
+          {loading? (<Loading size='sm' color="white"></Loading>) : ("Sign Up")}
         </Button>
         <Spacer y={0.7} />
         <Text>

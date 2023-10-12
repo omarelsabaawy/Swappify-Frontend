@@ -1,9 +1,15 @@
 import React from "react";
 import { Avatar, Dropdown, Navbar, Text } from "@nextui-org/react";
-import { signOut, useSession } from "next-auth/react";
+import { useUserContext } from "../../pages/Context/UserContext";
 
 const AvatarComp = () => {
-  const { data: session } = useSession();
+  const { user, clearUserAndToken } = useUserContext();
+
+  const handleSignOut = () => {
+    clearUserAndToken();
+    // router.push('/login');
+  };
+
 
     return (
         <Dropdown placement="bottom-right">
@@ -12,10 +18,10 @@ const AvatarComp = () => {
                 <Avatar
                   bordered
                   as="button"
-                  color="gradient"
+                  color={"error"}
                   size="md"
-                  src={session?.user?.image || "https://freesvg.org/img/primary-abentry.png"}
-            />
+                 text={user ? (user?.avatar ?? "").toUpperCase() : ""}
+                />
               </Dropdown.Trigger>
             </Navbar.Item>
             <Dropdown.Menu
@@ -28,7 +34,7 @@ const AvatarComp = () => {
                   Signed in as
                 </Text>
                 <Text b color="inherit" css={{ d: "flex" }}>
-                  {session?.user?.email}
+                  {(user?.email)?.split('@')[0]}
                 </Text>
               </Dropdown.Item>
               <Dropdown.Item key="WishList" withDivider>
@@ -51,8 +57,8 @@ const AvatarComp = () => {
               border: "none",
               textAlign: "left",
               cursor: 'pointer'
-            }}
-              onClick={()=>signOut()}
+              }}
+              onClick={handleSignOut}
             >
               Log Out
             </button>

@@ -7,11 +7,15 @@ import { SwappifyLogo } from './SwappifyLogo';
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import AvatarComp from "./AvatarComp";
+import { useUserContext } from '../../pages/Context/UserContext';
+
 
 const NavBar = () => { 
   const [searchQuery, setSearchQuery] = useState('');
   const [isActive, setIsActive] = useState('Home');
   const router = useRouter();
+
+  const { user } = useUserContext();
 
   const navigateToSignUp = () => {
     router.push('/SignUp');
@@ -125,24 +129,28 @@ const NavBar = () => {
             placeholder="Search..."
           />
         </Navbar.Item>
-          <>
-          <Navbar.Item
-          hideIn="xs"
-        >
-          <Link
-          href={{
-                pathname: '/Login',
-              }}>
-            Login
-          </Link>
-        </Navbar.Item>
-        <Navbar.Item
-        >
-          <Button auto ghost color="gradient" onClick={navigateToSignUp}>
-            Sign Up
-          </Button>
-      </Navbar.Item>
-    </>
+        {user ? (
+          <AvatarComp />
+        ): (
+            <>
+            <Navbar.Item
+              hideIn="xs"
+            >
+              <Link
+              href={{
+                    pathname: '/Login',
+                  }}>
+                Login
+              </Link>
+            </Navbar.Item>
+            <Navbar.Item
+            >
+              <Button auto ghost color="gradient" onClick={navigateToSignUp}>
+                Sign Up
+              </Button>
+            </Navbar.Item>
+          </>
+          )}
       </Navbar.Content>
       <Navbar.Collapse>
         <Navbar.CollapseItem
