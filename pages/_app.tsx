@@ -21,13 +21,14 @@ function MyApp({ Component, pageProps }: CustomPageProps) {
   return (
     <NextUIProvider theme={darkTheme}>
       <UserProvider>
-          {showNavBar ? (
-          <Component {...pageProps} />
+        {showNavBar ?
+          (
+            <Component {...pageProps} />
           ) : (
             <Layout>
-          <Component {...pageProps} />
-        </Layout>
-            )}
+              <Component {...pageProps} />
+            </Layout>
+          )}
         </UserProvider>
     </NextUIProvider>
   )
