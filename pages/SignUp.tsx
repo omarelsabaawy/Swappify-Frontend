@@ -44,16 +44,45 @@ const SignUp = () => {
     setLoading(true);
 
     if (!email || !password || !location || !phoneNumber) {
-      toast.error("Some Fields are required.", {
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      });
-      setRequiredField(true);
-      setLoading(false);
-    }
+    toast.error("Some Fields are required.", {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
+    setRequiredField(true);
+    setLoading(false);
+    return;
+  }
+
+  // Verify password strength
+    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+  if (!passwordPattern.test(password)) {
+    toast.error("Password is not strong enough. It must contain at least one uppercase letter, one lowercase letter, one digit, and be at least 8 characters long.", {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
+    setLoading(false);
+    return;
+  }
+
+  // Validate US phone number format
+  const phoneNumberPattern = /^(?:\d{10}|\d{3}[- ]\d{3}[- ]\d{4}|\(\d{3}\)[- ]\d{3}[- ]\d{4})$/;
+  if (!phoneNumberPattern.test(phoneNumber)) {
+    toast.error("Invalid US phone number format. Please enter a valid US phone number.", {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
+    setLoading(false);
+    return;
+  }
     
     try {
       const formData = {
@@ -63,7 +92,7 @@ const SignUp = () => {
         location: location,
         longitude: coordinates.longitude,
         latitude: coordinates.latitude,
-        avatar: email ? email[0] : ""
+        avatar: email ? email[0] + email[1] : ""
       }
 
       const response = await fetch('/api/register', {
@@ -83,7 +112,7 @@ const SignUp = () => {
           email: responseData.email,
           location: responseData.location,
           phoneNumber: responseData.phoneNumber,
-          avatar: responseData.email[0],
+          avatar: responseData.email[0] + responseData.email[1],
           latitude: coordinates.latitude,
           longitude: coordinates.longitude
         };
