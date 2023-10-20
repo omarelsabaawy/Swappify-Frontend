@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { Avatar, Button, Divider, Input, Loading, Progress, Spacer, Text } from '@nextui-org/react';
+import { Button, Divider, Input, Loading, Progress, Spacer, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
 import Logo from '../components/Logo';
@@ -113,8 +113,8 @@ const SignUp = () => {
           location: responseData.location,
           phoneNumber: responseData.phoneNumber,
           avatar: responseData.email[0] + responseData.email[1],
-          latitude: coordinates.latitude,
-          longitude: coordinates.longitude
+          latitude: responseData.latitude,
+          longitude: responseData.longitude
         };
 
         setUserAndToken(user, responseData.access_token);
@@ -132,6 +132,7 @@ const SignUp = () => {
           },
         });
         setLoading(false);
+        return;
       }
 
     } catch (error) {

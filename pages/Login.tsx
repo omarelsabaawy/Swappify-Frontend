@@ -27,11 +27,14 @@ const Login = () => {
   const handleLogin = async () => {
     setLoading(true);
 
+<<<<<<< HEAD
     if (e.key === 'Enter') {
       e.preventDefault();
       return;
     }
 
+=======
+>>>>>>> 8fa33626f43b5ba099b3ef2d87dadc8b55ca089e
     if (!email || !password) {
       toast.error("Some Fields are required.", {
         style: {
