@@ -1111,13 +1111,6 @@
     "@types/google.maps" "*"
     "@types/react" "*"
 
-"@types/react-responsive-masonry@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/@types/react-responsive-masonry/-/react-responsive-masonry-2.1.1.tgz"
-  integrity sha512-sFzNsxYugWO8G4d3ObhpcJCiqiYthWp9Udr9phDzy5BYxW78uMF8yK2IJ8+7bQLbmQz2xaIey1ZogbW3ATIo+A==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-transition-group@^4.4.6":
   version "4.4.7"
   resolved "https://registry.npmjs.org/@types/react-transition-group/-/react-transition-group-4.4.7.tgz"

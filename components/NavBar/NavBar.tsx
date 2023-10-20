@@ -8,7 +8,6 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import AvatarComp from "./AvatarComp";
 import { useUserContext } from '../../Context/UserContext';
-import Search from './Search';
 import { BsSearch } from 'react-icons/bs';
 
 
