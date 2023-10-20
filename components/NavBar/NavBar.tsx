@@ -2,7 +2,6 @@
 
 import { Navbar, Button, Input, Modal, Tooltip } from '@nextui-org/react';
 import React, { useState } from 'react';
-import $ from 'jquery';
 import SearchIcon from './SearchIcon';
 import { SwappifyLogo } from './SwappifyLogo';
 import Link from "next/link";
