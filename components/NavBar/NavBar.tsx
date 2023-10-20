@@ -163,7 +163,7 @@ const NavBar = () => {
           </>
           )}
       </Navbar.Content>
-      <Navbar.Collapse>
+      <Navbar.Collapse css={{backgroundColor: 'black'}}>
         <Navbar.CollapseItem
         isActive={isActive === 'Home' ? true : false}
         activeColor="primary"
