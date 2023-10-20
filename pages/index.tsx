@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css'
 import { Container, Text, Button, Grid, Col } from '@nextui-org/react';
 import InfoCard from '../components/InfoCard';
 import { useRouter } from 'next/router';
+import { useUserContext } from '../Context/UserContext';
 
 
 const Home = () => {
@@ -13,13 +14,15 @@ const Home = () => {
   // const session = getSession();
 
   // console.log(session);
-  // const ActionButton = () => {
-  //   if (!session) {
-  //     return router.push('/SignUp')
-  //   } else {
-  //     return router.push('/Swapping')
-  //   }
-  // }
+  const ActionButton = () => {
+    if (!user) {
+      return router.push('/SignUp')
+    } else {
+      return router.push('/Swapping')
+    }
+  }
+
+  const {user} = useUserContext();
 
   return (
     <Container>
@@ -31,10 +34,10 @@ const Home = () => {
             <Text weight={"bold"} size={70} css={{ "textAlign": "center", textGradient: "45deg, $purple600 -20%, $pink600 100%",}}>Simplify Your </Text>
             <Text weight={"bold"} size={70} css={{ "textAlign": "center", textGradient: "45deg, $yellow600 -20%, $red600 100%",}}>Sphere!</Text>
             <Button size="md" shadow color="gradient" css={{ "width": "100%", "marginTop": "10px", fontSize: '1.1rem' }}
-            // onClick={ActionButton}
+            onClick={ActionButton}
             >
-              {/* {session ? 'Lets start Swapping' : 'Join For Free'} */}
-              Join For Free
+              {user ? 'Lets start Swapping' : 'Join For Free'}
+              
             </Button>
           </Col>
         </Grid>

@@ -52,7 +52,7 @@ const Buying = () => {
                        <Badge enableShadow variant="bordered" color="primary">
                           New
                         </Badge>
-                        <Text h3 color="gradient">
+                        <Text h3 color="white">
                         {item.title}
                         </Text>
                     </Col>

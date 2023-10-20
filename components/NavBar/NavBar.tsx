@@ -1,13 +1,16 @@
 "use client"
 
-import { Navbar, Button, Input } from '@nextui-org/react';
-import { useEffect, useState } from 'react';
+import { Navbar, Button, Input, Modal, Tooltip } from '@nextui-org/react';
+import React, { useState } from 'react';
+import $ from 'jquery';
 import SearchIcon from './SearchIcon';
 import { SwappifyLogo } from './SwappifyLogo';
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import AvatarComp from "./AvatarComp";
 import { useUserContext } from '../../Context/UserContext';
+import Search from './Search';
+import { BsSearch } from 'react-icons/bs';
 
 
 const NavBar = () => { 
@@ -16,6 +19,15 @@ const NavBar = () => {
   const router = useRouter();
 
   const { user } = useUserContext();
+
+  const [visible, setVisible] = useState(false);
+
+  const handler = () => setVisible(true);
+
+  const closeHandler = () => {
+    setVisible(false);
+    console.log("closed");
+  };
 
   const navigateToSignUp = () => {
     router.push('/SignUp');
@@ -99,40 +111,41 @@ const NavBar = () => {
         css={{
           "@xsMax": {
             w: "100%",
-            jc: "space-between",
+            jc: "end",
           },
         }}
       >
-        <Navbar.Item
-          css={{
-            "@xsMax": {
-              w: "100%",
-              jc: "center",
-            },
-          }}
-        >
-          <Input
-            clearable
-            aria-labelledby="search-label"
-            contentLeft={
-              <SearchIcon fill="var(--nextui-colors-accents6)" size={18} />
-            }
-            contentLeftStyling={false}
-            css={{
-              w: "100%",
-              "& .nextui-input-content--left": {
-                h: "100%",
-                ml: "$4",
-                dflex: "center",
-              },
-            }}
-            placeholder="Search..."
-          />
-        </Navbar.Item>
         {user ? (
-          <AvatarComp />
+          <>
+            <Tooltip content={"Search a product."} rounded color="secondary" placement='bottom'>
+                <button style={{
+                  backgroundColor: 'transparent',
+                  borderColor: 'transparent',
+                  cursor: 'pointer'
+                }}
+                  onClick={handler}
+                  
+                >
+                  <BsSearch size={21}/>
+                </button>
+              </Tooltip>
+            <AvatarComp />
+          </>
         ): (
             <>
+              <Tooltip content={"Search a product."} rounded color="secondary" placement='bottom'>
+                <button style={{
+                  backgroundColor: 'transparent',
+                  borderColor: 'transparent',
+                  cursor: 'pointer'
+                }}
+                  onClick={handler}
+                  
+                >
+                  <BsSearch size={21}/>
+                </button>
+              </Tooltip>
+
             <Navbar.Item
               hideIn="xs"
             >
@@ -218,6 +231,42 @@ const NavBar = () => {
           </Link>
         </Navbar.CollapseItem>
       </Navbar.Collapse>
+
+      <Modal
+        closeButton
+        blur
+        aria-labelledby="modal-title"
+        open={visible}
+        onClose={closeHandler}
+      >
+        <Modal.Body>
+          <Input
+            clearable
+            underlined
+            aria-labelledby="search-label"
+            contentLeft={
+              <SearchIcon fill="var(--nextui-colors-accents6)" size={24} />
+            }
+            contentLeftStyling={false}
+            css={{
+              w: "100%",
+              "& .nextui-input-content--left": {
+                h: "100%",
+                ml: "$4",
+                mr: "$5",
+                dflex: "center",
+              },
+            }}
+            placeholder="Search..."
+            size='xl'
+            
+          />
+        </Modal.Body>
+        <Modal.Footer>
+
+        </Modal.Footer>
+      </Modal>
+
     </Navbar>
   );
 }

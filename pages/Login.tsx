@@ -1,19 +1,119 @@
+"use client"
+
 import React from 'react';
-import Image from 'next/image';
-import { Button, Divider, Input, Spacer, Text, Tooltip } from '@nextui-org/react';
+import { Button, Divider, Input, Loading, Spacer, Text, Tooltip } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
 import Logo from '../components/Logo';
+import { UnLockIcon } from '../components/UnLockIcon';
+import { LockIcon } from '../components/LockIcon';
+import { useUserContext } from '../Context/UserContext';
+import toast, {Toaster} from 'react-hot-toast';
+
 
 const Login = () => {
   const router = useRouter();
+  const [email, setEmail] = React.useState<string | undefined>("");
+  const [password, setPassword] = React.useState<string | undefined>("");
+  const [loading, setLoading] = React.useState<Boolean | undefined>(false);
+  const [requiredField, setRequiredField] = React.useState<Boolean | undefined>(false);
+
+  const { setUserAndToken } = useUserContext();
 
   const handleBackButtonClick = () => {
     router.back();
   };
+
+  const handleLogin = async () => {
+    setLoading(true);
+
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      return;
+    }
+
+    if (!email || !password) {
+      toast.error("Some Fields are required.", {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
+      setRequiredField(true);
+      setLoading(false);
+      return;
+    }
+    try {
+
+      const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+      if (!passwordPattern.test(password)) {
+        toast.error("Password is not strong enough. It must contain at least one uppercase letter, one lowercase letter, one digit, and be at least 8 characters long.", {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
+        setLoading(false);
+        return;
+      }
+
+      const formData = {
+        email: email,
+        password: password,
+      }
+
+      const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+      });
+      
+      const responseData = await response.json();
+
+      if (response.ok) {
+
+        const user = {
+          id: responseData.id,
+          email: responseData.email,
+          location: responseData.location,
+          phoneNumber: responseData.phoneNumber,
+          avatar: responseData.email[0] + responseData.email[1],
+          latitude: responseData.latitude,
+          longitude: responseData.longitude
+        };
+
+        setUserAndToken(user, responseData.access_token);
+
+        setLoading(false);
+        
+        router.push('/');
+
+      } else {
+        toast.error(responseData.message, {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
+        setLoading(false);
+        return;
+      }
+
+    } catch (error) {
+      setLoading(false);
+    }
+
+
+  }
   
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+      <Toaster position='bottom-right' />
       <div style={{
         position: 'absolute',
         top: '10px',
@@ -57,31 +157,49 @@ const Login = () => {
           clearable
           bordered
           type='email'
+          value={email}
+          aria-label="Email"
+          onChange={(e)=>setEmail(e.target.value)}
           labelPlaceholder="Email"
           style={{
             width: '330px',
+            backgroundColor: 'inherit'
           }}
           size='md'
           required
+          color='secondary'
+          status={(requiredField && !email) ? 'error' : 'default'}
+          helperText={(requiredField && !email) ? 'Email is Required' : ''}
         />
         <Spacer y={1.6} />
-        <Input
+        <Input.Password
           clearable
           bordered
+          visibleIcon={<UnLockIcon fill="currentColor" />}
+          hiddenIcon={<LockIcon fill="currentColor" />}
           type='password'
+          value={password}
+          aria-label="Password"
+          onChange={(e)=>setPassword(e.target.value)}
           labelPlaceholder="Password"
           style={{
-            width: '330px'
+            width: '270px'
           }}
           size='md'
           required
+          color='secondary'
+          status={(requiredField && !password) ? 'error' : 'default'}
+          helperText={(requiredField && !password) ? 'Password is Required' : ''}
         />
         <Spacer y={1} />
-        <Button
-          type='submit'
-          shadow
+       <Button
+          type='button'
+          shadow 
           color="gradient"
-        >Login</Button>
+          onPress={handleLogin}
+        >
+          {loading? (<Loading size='sm' color="white"></Loading>) : ("Login")}
+        </Button>
         <Spacer y={0.7} />
         <Text>
           Do not have an Account? &nbsp;
