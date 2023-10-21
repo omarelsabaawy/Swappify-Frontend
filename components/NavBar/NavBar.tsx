@@ -172,8 +172,7 @@ const NavBar = () => {
         <Navbar.CollapseItem
             css={{
               paddingTop: '$5'
-            }}
-            
+            }}    
         >
               <Link
               href={{
@@ -183,7 +182,7 @@ const NavBar = () => {
               Buying
             </Link>
         </Navbar.CollapseItem>
-        <Navbar.Collapse
+        <Navbar.CollapseItem
           css={{
             paddingTop: '$5'
           }}
@@ -195,7 +194,7 @@ const NavBar = () => {
             >
               Contact Us
           </Link>
-        </Navbar.Collapse>
+        </Navbar.CollapseItem>
       </Navbar.Collapse>
 
       <Modal

@@ -11,7 +11,7 @@ const Home = () => {
 
   const ActionButton = () => {
     if (!user) {
-      return router.push('/SignUp')
+      return router.push('/Auth/SignUp')
     } else {
       return router.push('/Swapping')
     }

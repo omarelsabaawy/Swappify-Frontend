@@ -317,7 +317,7 @@ const SignUp = () => {
             }}
           >
             <Link href={{
-              pathname: '/Login'
+              pathname: '/Auth/Login'
             }}>
               Login
             </Link>
