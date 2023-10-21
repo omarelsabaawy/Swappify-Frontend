@@ -13,7 +13,7 @@ const Home = () => {
     if (!user) {
       return router.push('/Auth/SignUp')
     } else {
-      return router.push('/Shop/Swapping')
+      return router.push('/Shop/Swap')
     }
   }
 
