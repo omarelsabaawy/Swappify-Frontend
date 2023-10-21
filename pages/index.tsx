@@ -1,8 +1,5 @@
 "use client"
 
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import { Container, Text, Button, Grid, Col } from '@nextui-org/react';
 import InfoCard from '../components/InfoCard';
 import { useRouter } from 'next/router';
@@ -11,9 +8,7 @@ import { useUserContext } from '../Context/UserContext';
 
 const Home = () => {
   const router = useRouter();
-  // const session = getSession();
 
-  // console.log(session);
   const ActionButton = () => {
     if (!user) {
       return router.push('/SignUp')

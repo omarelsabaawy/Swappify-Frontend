@@ -4,10 +4,10 @@ import React from 'react';
 import { Button, Divider, Input, Loading, Spacer, Text, Tooltip } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
-import Logo from '../components/Logo';
-import { UnLockIcon } from '../components/UnLockIcon';
-import { LockIcon } from '../components/LockIcon';
-import { useUserContext } from '../Context/UserContext';
+import Logo from '../../components/Logo';
+import { UnLockIcon } from '../../components/UnLockIcon';
+import { LockIcon } from '../../components/LockIcon';
+import { useUserContext } from '../../Context/UserContext';
 import toast, {Toaster} from 'react-hot-toast';
 
 

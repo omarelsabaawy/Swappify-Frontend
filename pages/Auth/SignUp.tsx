@@ -4,14 +4,14 @@ import React from 'react';
 import { Button, Divider, Input, Loading, Progress, Spacer, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
-import Logo from '../components/Logo';
+import Logo from '../../components/Logo';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
-import { UnLockIcon } from '../components/UnLockIcon';
-import { LockIcon } from '../components/LockIcon';
-import { useUserContext } from '../Context/UserContext';
+import { UnLockIcon } from '../../components/UnLockIcon';
+import { LockIcon } from '../../components/LockIcon';
+import { useUserContext } from '../../Context/UserContext';
 import toast, {Toaster} from 'react-hot-toast';
 
 

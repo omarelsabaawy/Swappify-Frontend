@@ -13,7 +13,6 @@ import { BsSearch } from 'react-icons/bs';
 
 const NavBar = () => { 
   const [searchQuery, setSearchQuery] = useState('');
-  const [isActive, setIsActive] = useState('Home');
   const router = useRouter();
 
   const { user } = useUserContext();
@@ -28,7 +27,7 @@ const NavBar = () => {
   };
 
   const navigateToSignUp = () => {
-    router.push('/SignUp');
+    router.push('/Auth/SignUp');
   }
 
   return (
@@ -39,14 +38,9 @@ const NavBar = () => {
       </Navbar.Brand>
       <Navbar.Content hideIn="sm" variant="highlight">  
         <Navbar.Item
-        variant="highlight-solid-rounded"
-          isActive={isActive === 'Home' ? true : false}
-          activeColor="primary"
-
           css={{
             paddingTop: '$5'
         }}
-        onClick={()=>setIsActive('Home')}
         >
           <Link
               href={{
@@ -57,44 +51,32 @@ const NavBar = () => {
             </Link>
           </Navbar.Item>
         <Navbar.Item
-        variant="highlight-solid-rounded"
-          isActive={isActive === 'Swapping' ? true : false}
-          activeColor="primary"
           css={{
             paddingTop: '$5'
           }}
-          onClick={() => setIsActive('Swapping')}
         ><Link
               href={{
-                pathname: '/Swapping',
+                pathname: '/Shop/Swap',
               }}
             >
               Swapping
           </Link>
         </Navbar.Item>
         <Navbar.Item
-        variant="highlight-solid-rounded"
-          isActive={isActive === 'Buying' ? true : false}
-          activeColor="primary"
             css={{
               paddingTop: '$5'
             }}
-            onClick={() => setIsActive('Buying')}
         ><Link
               href={{
-                pathname: '/Buying',
+                pathname: '/Shop/Buy',
               }}
             >
               Buying
             </Link></Navbar.Item>
         <Navbar.Item
-        variant="highlight-solid-rounded"
-          isActive={isActive === 'Contact Us' ? true : false}
-          activeColor="primary"
           css={{
             paddingTop: '$5'
           }}
-          onClick={() => setIsActive('Contact Us')}
         >
           <Link
               href={{
@@ -122,7 +104,6 @@ const NavBar = () => {
                   cursor: 'pointer'
                 }}
                   onClick={handler}
-                  
                 >
                   <BsSearch size={21}/>
                 </button>
@@ -138,18 +119,16 @@ const NavBar = () => {
                   cursor: 'pointer'
                 }}
                   onClick={handler}
-                  
                 >
                   <BsSearch size={21}/>
                 </button>
               </Tooltip>
-
             <Navbar.Item
               hideIn="xs"
             >
               <Link
               href={{
-                    pathname: '/Login',
+                    pathname: '/Auth/Login',
                   }}>
                 Login
               </Link>
@@ -165,12 +144,9 @@ const NavBar = () => {
       </Navbar.Content>
       <Navbar.Collapse css={{backgroundColor: 'black'}}>
         <Navbar.CollapseItem
-        isActive={isActive === 'Home' ? true : false}
-        activeColor="primary"
           css={{
             paddingTop: '$5'
-        }}
-          onClick={() => setIsActive('Home')}
+        }} 
         >
               <Link
               href={{
@@ -181,44 +157,36 @@ const NavBar = () => {
             </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem
-        isActive={isActive === 'Swapping' ? true : false}
-        activeColor="primary"
             css={{
               paddingTop: '$5'
             }}
-            onClick={() => setIsActive('Swapping')}
         >
               <Link
               href={{
-                pathname: '/Swapping',
+                pathname: '/Shop/Swap',
               }}
             >
               Swapping
             </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem
-        isActive={isActive === 'Buying' ? true : false}
-        activeColor="primary"
             css={{
               paddingTop: '$5'
             }}
-            onClick={() => setIsActive('Buying')}
+            
         >
               <Link
               href={{
-                pathname: '/Buying',
+                pathname: '/Shop/Buy',
               }}
             >
               Buying
             </Link>
         </Navbar.CollapseItem>
-        <Navbar.CollapseItem
-          isActive={isActive === 'Contact Us' ? true : false}
-          activeColor="primary"
+        <Navbar.Collapse
           css={{
             paddingTop: '$5'
           }}
-          onClick={() => setIsActive('Contact Us')}
         >
               <Link
               href={{
@@ -227,7 +195,7 @@ const NavBar = () => {
             >
               Contact Us
           </Link>
-        </Navbar.CollapseItem>
+        </Navbar.Collapse>
       </Navbar.Collapse>
 
       <Modal
