@@ -9,21 +9,78 @@ import {
     Loading,
 } from '@nextui-org/react';
 import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const ContactUs = () => {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
-    const [feedback, setFeedback] = useState("");
+    const [body, setBody] = useState("");
     const [loading, setLoading] = useState(false);
+    const [requiredField, setRequiredField] = useState(false);
 
     const { setVisible, bindings } = useModal();
 
     const sendFeedBack = async () => {
         setLoading(true);
-        setVisible(true);
-        setLoading(false);
+
+        if (!email || !name || !subject || !body) {
+            toast.error("Some Fields are required.", {
+            style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+            },
+            });
+            setRequiredField(true);
+            setLoading(false);
+            return;
+        }
+
+        try {
+                const formData = {
+                    email,
+                    name,
+                    subject,
+                    body
+                }
+
+                const response = await fetch('/api/feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+                
+                if (response.ok) {
+                    setVisible(true);
+                    setLoading(false);
+                    setRequiredField(false);
+                    setBody("");
+                    setEmail("");
+                    setName("");
+                    setSubject("");
+                    return;
+                } else {
+                    toast.error("Error while sharing your feedback.", {
+                    style: {
+                        borderRadius: '10px',
+                        background: '#333',
+                        color: '#fff',
+                    },
+                    });
+                    setRequiredField(true);
+                    setLoading(false);
+                    return;
+                }
+            
+            } catch (error) {
+                setLoading(false);
+            }
     }
 
     return (
@@ -32,7 +89,8 @@ const ContactUs = () => {
             alignContent: 'center',
             textAlign: 'center',
             height: '95vh'
-       }}>
+        }}>
+            <Toaster position='bottom-right' />
         <Text h2 css={{
             textAlign: 'center',
             marginBottom: '$6',
@@ -49,13 +107,13 @@ const ContactUs = () => {
             Got a technical issue? Want to send feedback about Swappify? Need details about Swappify? Let us know.
         </Text>
             <div>
-                <Input
+            <Input
             clearable
             bordered
             type='text'
-            //   value={email}
+            value={name}
             aria-label="Name"
-            //   onChange={(e)=>setEmail(e.target.value)}
+            onChange={(e)=>setName(e.target.value)}
             labelLeft="Name"
             size='md'
             color='secondary'
@@ -69,18 +127,18 @@ const ContactUs = () => {
                 marginTop: '$8'
             }}
             required
-            //   status={(requiredField && !email) ? 'error' : 'default'}
-            //   helperText={(requiredField && !email) ? 'Email is Required' : ''}
+            status={(requiredField && !name) ? 'error' : 'default'}
+            helperText={(requiredField && !name) ? 'Name is Required' : ''}
         />
         </div>
             <div>
-                <Input
+            <Input
             clearable
             bordered
             type='email'
-            //   value={email}
+            value={email}
             aria-label="Email"
-            //   onChange={(e)=>setEmail(e.target.value)}
+            onChange={(e)=>setEmail(e.target.value)}
             labelLeft="Email"
             size='md'
             color='secondary'
@@ -94,8 +152,8 @@ const ContactUs = () => {
                 marginTop: '$10'
             }}
             required
-            //   status={(requiredField && !email) ? 'error' : 'default'}
-            //   helperText={(requiredField && !email) ? 'Email is Required' : ''}
+            status={(requiredField && !email) ? 'error' : 'default'}
+            helperText={(requiredField && !email) ? 'Email is Required' : ''}
         />
             </div>
             <div>
@@ -103,9 +161,9 @@ const ContactUs = () => {
             clearable
             bordered
             type='text'
-            //   value={email}
-            aria-label="Email"
-            //   onChange={(e)=>setEmail(e.target.value)}
+            value={subject}
+            aria-label="subject"
+            onChange={(e)=>setSubject(e.target.value)}
             labelLeft="Subject"
             size='md'
             color='secondary'
@@ -119,17 +177,20 @@ const ContactUs = () => {
                 marginTop: '$10'
             }}
             required
-            //   status={(requiredField && !email) ? 'error' : 'default'}
-            //   helperText={(requiredField && !email) ? 'Email is Required' : ''}
+            status={(requiredField && !subject) ? 'error' : 'default'}
+            helperText={(requiredField && !subject) ? 'Subject is Required' : ''}
         />
             </div>
             <div>
-                <Textarea
+            <Textarea
             id="message"
             rows={6}
             placeholder='Your Feedback'
             size='md'
             bordered
+            value={body}
+            onChange={(e)=>setBody(e.target.value)}
+
             color="secondary"
             css={{
                     width: '50%',
@@ -139,6 +200,8 @@ const ContactUs = () => {
                 backgroundColor: 'inherit',
                 marginTop: '$10'
             }}
+            status={(requiredField && ! body) ? 'error' : 'default'}
+            helperText={(requiredField && ! body) ? 'Body is Required' : ''}
         />
         </div>
         <Button
@@ -164,42 +227,17 @@ const ContactUs = () => {
             }}
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
-            {...bindings}
+                {...bindings}
+                closeButton
         >
             <Modal.Header>
             <Text id="modal-title" color='success' size={20}>
                 Your feedback was sent successfully
             </Text>
-            </Modal.Header>
-            <Modal.Body>
-                <Input
-                    type='email'
-                    bordered
-                    color='default'
-                    labelLeft="From:"
-                    value={email}
-                    disabled
-                />
-                <Input
-                    type='text'
-                    bordered
-                    color='default'
-                    labelLeft="Subject:"
-                    value={subject}
-                    disabled
-                />
-                <Textarea
-                    bordered
-                    color='default'
-                    value={feedback}
-                    disabled
-                />
-            </Modal.Body>
-            <Modal.Footer>
-            <Button auto color="error" onPress={() => setVisible(false)}>
-                Close
-            </Button>
-            </Modal.Footer>
+                </Modal.Header>
+                <Modal.Footer>
+
+                </Modal.Footer>
         </Modal>
         </Container>
     );

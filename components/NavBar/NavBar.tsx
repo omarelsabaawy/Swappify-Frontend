@@ -9,7 +9,17 @@ import { useRouter } from 'next/router';
 import AvatarComp from "./AvatarComp";
 import { useUserContext } from '../../Context/UserContext';
 import { BsSearch } from 'react-icons/bs';
+import { RxHamburgerMenu } from 'react-icons/rx';
 
+// Import the MUI components for the drawer
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import { ListItemButton, ListItemText } from '@mui/material';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import MailIcon from '@mui/icons-material/Mail';
 
 const NavBar = () => { 
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,6 +30,11 @@ const NavBar = () => {
   const [visible, setVisible] = useState(false);
 
   const handler = () => setVisible(true);
+
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const toggleDrawer = () => {
+    setDrawerOpen(!isDrawerOpen);
+  };
 
   const closeHandler = () => {
     setVisible(false);
@@ -33,7 +48,9 @@ const NavBar = () => {
   return (
     <Navbar isBordered variant="floating">
       <Navbar.Brand>
-        <Navbar.Toggle showIn="sm" aria-label="toggle navigation" />
+        <Button onClick={toggleDrawer} auto size={'sm'} style={{ backgroundColor: 'transparent', paddingLeft: '2px', paddingRight: '2px' }} className="menu-button">
+          <RxHamburgerMenu size={20} />
+        </Button>
         <SwappifyLogo />
       </Navbar.Brand>
       <Navbar.Content hideIn="sm" variant="highlight">  
@@ -142,61 +159,6 @@ const NavBar = () => {
           </>
           )}
       </Navbar.Content>
-      <Navbar.Collapse css={{backgroundColor: 'black'}}>
-        <Navbar.CollapseItem
-          css={{
-            paddingTop: '$5'
-        }} 
-        >
-              <Link
-              href={{
-                pathname: '/',
-              }}
-            >
-              Home
-            </Link>
-        </Navbar.CollapseItem>
-        <Navbar.CollapseItem
-            css={{
-              paddingTop: '$5'
-            }}
-        >
-              <Link
-              href={{
-                pathname: '/Shop/Swap',
-              }}
-            >
-              Swapping
-            </Link>
-        </Navbar.CollapseItem>
-        <Navbar.CollapseItem
-            css={{
-              paddingTop: '$5'
-            }}    
-        >
-              <Link
-              href={{
-                pathname: '/Shop/Buy',
-              }}
-            >
-              Buying
-            </Link>
-        </Navbar.CollapseItem>
-        <Navbar.CollapseItem
-          css={{
-            paddingTop: '$5'
-          }}
-        >
-              <Link
-              href={{
-                pathname: '/ContactUs',
-              }}
-            >
-              Contact Us
-          </Link>
-        </Navbar.CollapseItem>
-      </Navbar.Collapse>
-
       <Modal
         closeButton
         blur
@@ -232,6 +194,55 @@ const NavBar = () => {
         </Modal.Footer>
       </Modal>
 
+      <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
+        <Box
+          sx={{ width: 250, height: 1000, backgroundColor: 'black'}}
+          role="presentation"
+          onClick={toggleDrawer}
+          onKeyDown={toggleDrawer}
+        >
+          <List>
+            <ListItem sx={{paddingLeft: 0, paddingTop: 0, paddingRight: 0, paddingBottom: 0}}>
+              <SwappifyLogo />
+            </ListItem>
+          </List>
+          <Divider />
+          <List>
+          <ListItem >
+              <ListItemButton onClick={() => { router.push('/') }}>
+              <ListItemText>
+                <Link href={{ pathname: '/' }}>Home</Link>
+              </ListItemText>
+            </ListItemButton>
+            </ListItem>
+            <Divider />
+          <ListItem >
+            <ListItemButton onClick={() => { router.push('/Shop/Swap') }}>
+              <ListItemText>
+                <Link href={{ pathname: '/Shop/Swap' }}>Swapping</Link>
+              </ListItemText>
+            </ListItemButton>
+            </ListItem>
+            <Divider />
+          <ListItem >
+            <ListItemButton onClick={()=>{router.push('/Shop/Buy')}}>
+              <ListItemText>
+                <Link href={{ pathname: '/Shop/Buy' }}>Buying</Link>
+              </ListItemText>
+            </ListItemButton>
+            </ListItem>
+            <Divider />
+          <ListItem >
+            <ListItemButton onClick={() => { router.push('/ContactUs') }}>
+              <ListItemText>
+                <Link href={{ pathname: '/ContactUs' }}>Contact Us</Link>
+              </ListItemText>
+            </ListItemButton>
+            </ListItem>
+            <Divider />
+        </List>
+        </Box>
+      </Drawer>
     </Navbar>
   );
 }

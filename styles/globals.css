@@ -54,5 +54,11 @@ a {
 }
 
 .googleButton:hover {
-  background-color: #13131381;
+  background-color: #6b6a6a81;
+}
+
+@media (min-width: 992px) {
+  .menu-button {
+    display: none;
+  }
 }

@@ -13,6 +13,11 @@ const nextConfig = {
       {
         source: '/api/login',
         destination: 'https://swappify-auth.vercel.app/api/login',
+      },
+      // Proxy for the users to send there feedbacks upon the contact us function
+      {
+        source: '/api/feedback',
+        destination: 'https://swappify-contact-us.vercel.app/api/feedback'
       }
     ]
   }
