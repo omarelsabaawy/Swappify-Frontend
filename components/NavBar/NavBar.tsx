@@ -1,6 +1,6 @@
 "use client"
 
-import { Navbar, Button, Input, Modal, Tooltip } from '@nextui-org/react';
+import { Navbar, Button, Input, Modal, Tooltip, Text } from '@nextui-org/react';
 import React, { useState } from 'react';
 import SearchIcon from './SearchIcon';
 import { SwappifyLogo } from './SwappifyLogo';
@@ -196,7 +196,7 @@ const NavBar = () => {
 
       <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
         <Box
-          sx={{ width: 250, height: 1000, backgroundColor: 'black'}}
+          sx={{ width: 250, height: 1000, backgroundColor: 'whitesmoke'}}
           role="presentation"
           onClick={toggleDrawer}
           onKeyDown={toggleDrawer}
@@ -209,34 +209,48 @@ const NavBar = () => {
           <Divider />
           <List>
           <ListItem >
-              <ListItemButton onClick={() => { router.push('/') }}>
+              <ListItemButton sx={{
+                '&:hover': {
+                  backgroundColor: '#240c3c71',
+                },
+                borderRadius: '1rem'
+              }} onClick={() => { router.push('/') }}>
+                <Text css={{ color: 'Black', fontWeight: 'bold'}}>Home</Text>
+            </ListItemButton>
+            </ListItem>
+            <Divider />
+          <ListItem >
+            <ListItemButton sx={{
+                '&:hover': {
+                  backgroundColor: '#240c3c71',
+                },
+                borderRadius: '1rem'
+              }} onClick={() => { router.push('/Shop/Swap') }}>
+              <Text css={{ color: 'Black', fontWeight: 'bold'}}>Swapping</Text>
+            </ListItemButton>
+            </ListItem>
+            <Divider />
+          <ListItem >
+            <ListItemButton sx={{
+                '&:hover': {
+                  backgroundColor: '#240c3c71',
+                },
+                borderRadius: '1rem'
+              }} onClick={()=>{router.push('/Shop/Buy')}}>
               <ListItemText>
-                <Link href={{ pathname: '/' }}>Home</Link>
+                <Text css={{ color: 'Black', fontWeight: 'bold'}}>Buying</Text>
               </ListItemText>
             </ListItemButton>
             </ListItem>
             <Divider />
           <ListItem >
-            <ListItemButton onClick={() => { router.push('/Shop/Swap') }}>
-              <ListItemText>
-                <Link href={{ pathname: '/Shop/Swap' }}>Swapping</Link>
-              </ListItemText>
-            </ListItemButton>
-            </ListItem>
-            <Divider />
-          <ListItem >
-            <ListItemButton onClick={()=>{router.push('/Shop/Buy')}}>
-              <ListItemText>
-                <Link href={{ pathname: '/Shop/Buy' }}>Buying</Link>
-              </ListItemText>
-            </ListItemButton>
-            </ListItem>
-            <Divider />
-          <ListItem >
-            <ListItemButton onClick={() => { router.push('/ContactUs') }}>
-              <ListItemText>
-                <Link href={{ pathname: '/ContactUs' }}>Contact Us</Link>
-              </ListItemText>
+            <ListItemButton sx={{
+                '&:hover': {
+                  backgroundColor: '#240c3c71',
+                },
+                borderRadius: '1rem'
+              }} onClick={() => { router.push('/ContactUs') }}>
+              <Text css={{ color: 'Black', fontWeight: 'bold'}}>Contact Us</Text>
             </ListItemButton>
             </ListItem>
             <Divider />

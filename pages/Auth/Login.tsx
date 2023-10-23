@@ -112,7 +112,7 @@ const Login = () => {
       <div style={{
         position: 'absolute',
         top: '10px',
-        left: '10px',
+        left: '0.5%',
         zIndex: '1',
         backgroundColor: 'transparent',
         cursor: 'pointer',
