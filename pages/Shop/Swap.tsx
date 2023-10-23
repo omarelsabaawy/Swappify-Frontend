@@ -42,13 +42,23 @@ const Swapping = () => {
 
   return (
     <>   
-      <Grid.Container gap={1.2} justify="space-between" style={{
-        marginTop: '15px'
+      <Grid.Container gap={1.2} justify="space-between" css={{
+        marginTop: '15px',
+        "@smMax": {
+          margin: '0',
+        }
       }}>
 
       {list.map((item, index) => (
         <Grid xs={6} sm={3} key={index}>
-            <Card css={{ w: "100%", h: "400px" }} isPressable isHoverable >
+          <Card css={{
+            w: "100%",
+            h: "400px",
+            "@smMax": {
+              w: "95%",
+              h: "350px",    
+            }
+          }} isPressable isHoverable >
                 <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                     <Col>
                        <Badge enableShadow variant="bordered" color="primary">
