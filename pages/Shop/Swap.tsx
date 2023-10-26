@@ -1,5 +1,6 @@
 import React from 'react';
 import { Badge, Button, Card, Col, Container, Grid, Row, Text } from "@nextui-org/react";
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const Swapping = () => {
     const list = [
@@ -40,8 +41,31 @@ const Swapping = () => {
     },
   ];
 
+  const [age, setAge] = React.useState('');
+
   return (
-    <>   
+    <>
+      
+      {/* <Container>
+        <Button>Filter</Button>
+        <FormControl sx={{ m: 1, minWidth: 120, backgroundColor: 'whitesmoke', borderRadius: '1rem' }}>
+        <InputLabel id="demo-simple-select-filled-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-filled-label"
+          id="demo-simple-select-filled"
+          value={age}
+            onChange={(e) => setAge(e.target.value)}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
+      </Container> */}
+
       <Grid.Container gap={1.2} justify="space-between" css={{
         marginTop: '15px',
         "@smMax": {

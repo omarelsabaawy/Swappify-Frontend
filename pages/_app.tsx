@@ -16,7 +16,7 @@ const darkTheme = createTheme({type: "dark"});
 function MyApp({ Component, pageProps }: CustomPageProps) {
   const router = useRouter();
 
-  const showNavBar = (router.pathname === "/Auth/Login" || router.pathname === "/Auth/SignUp") ? true : false;
+  const showNavBar = (router.pathname === "/Auth/Login" || router.pathname === "/Auth/SignUp" || router.pathname === "/User/List_New_Item") ? true : false;
 
   return (
     <NextUIProvider theme={darkTheme}>

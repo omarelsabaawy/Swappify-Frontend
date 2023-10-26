@@ -17,7 +17,7 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import { ListItemButton, ListItemText } from '@mui/material';
+import { FormControl, InputLabel, ListItemButton, ListItemText, MenuItem, Select } from '@mui/material';
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
 
@@ -186,11 +186,9 @@ const NavBar = () => {
             }}
             placeholder="Search..."
             size='xl'
-            
           />
         </Modal.Body>
         <Modal.Footer>
-
         </Modal.Footer>
       </Modal>
 
