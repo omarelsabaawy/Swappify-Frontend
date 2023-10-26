@@ -1,9 +1,11 @@
 import React from "react";
 import { Avatar, Dropdown, Navbar, Text } from "@nextui-org/react";
 import { useUserContext } from "../../Context/UserContext";
+import { useRouter } from "next/router";
 
 const AvatarComp = () => {
   const { user, clearUserAndToken } = useUserContext();
+  const router = useRouter();
 
   const handleSignOut = () => {
     clearUserAndToken();
@@ -27,7 +29,7 @@ const AvatarComp = () => {
             <Dropdown.Menu
               aria-label="User menu actions"
               color="default"
-              onAction={(actionKey) => console.log({ actionKey })}
+              onAction={(actionKey) => router.push(actionKey as any)}
             >
               <Dropdown.Item key="profile" css={{ height: "$18" }}>
                 <Text b color="inherit" css={{ d: "flex" }}>
@@ -37,14 +39,13 @@ const AvatarComp = () => {
                   {((user?.email)?.split('@')[0])?.toLocaleUpperCase()}
                 </Text>
               </Dropdown.Item>
+              <Dropdown.Item key="/User/List_New_Item" withDivider css={{ textTransform: 'uppercase', color: '$primary'}}>List new Item</Dropdown.Item>
               <Dropdown.Item key="WishList" withDivider>
                 My WishList 
               </Dropdown.Item>
-              <Dropdown.Item key="AddToWishList">Add to WishList</Dropdown.Item>
-              <Dropdown.Item key="SwapList" withDivider>
+              <Dropdown.Item key="SwapList">
                 My SwapList
               </Dropdown.Item>
-              <Dropdown.Item key="AddToSwapList">Add to SwapList</Dropdown.Item>
               <Dropdown.Item key="RecommendedItems" withDivider>
                 Recommended Items
               </Dropdown.Item>
