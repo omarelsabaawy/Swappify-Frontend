@@ -48,7 +48,7 @@ function List_New_Item() {
         <DragAndDrop />
       </Container>
       <Row>
-        <Text h4 css={{marginLeft: '15%', marginTop: '$1', "@smMax":{marginLeft: '$1',}}}>Product Info :</Text>
+        <Text h4 css={{marginLeft: '15%', marginTop: '$3', "@smMax":{marginLeft: '$1',}}}>Product Info :</Text>
       </Row>
       
 
