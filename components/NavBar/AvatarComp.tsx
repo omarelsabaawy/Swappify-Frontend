@@ -49,7 +49,7 @@ const AvatarComp = () => {
               <Dropdown.Item key="RecommendedItems" withDivider>
                 Recommended Items
               </Dropdown.Item>
-              <Dropdown.Item key="logout" withDivider color="error">
+              <Dropdown.Item key="/" withDivider color="error">
             <button
               type="button"
               style={{
