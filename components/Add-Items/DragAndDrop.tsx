@@ -20,7 +20,7 @@ const thumb: React.CSSProperties = {
   border: '1px solid #444', // Dark border color
   marginBottom: 8,
   marginRight: 8,
-  width: 100,
+  width: "auto",
   height: 100,
   padding: 4,
   boxSizing: 'border-box',
@@ -96,11 +96,9 @@ function DragAndDrop() {
   const thumbs = files.map((file, index) => (
     <div style={thumb} key={file.name}>
       <div style={thumbInner}>
-        <Image 
+        <img 
           src={file.preview}
           style={img}
-          height='100'
-          width='100'
           onLoad={() => {
             URL.revokeObjectURL(file.preview);
           }}
