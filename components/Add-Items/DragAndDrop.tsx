@@ -1,3 +1,4 @@
+import { Button, Container, Spacer, Text } from '@nextui-org/react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -60,13 +61,14 @@ const dropzoneContainer: React.CSSProperties = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '150px', // Adjust the height as needed
-  border: '2px dashed purple', // Dashed purple border
+  height: '250px', // Adjust the height as needed
+  border: '2px groove white', // Dashed purple border
   borderRadius: '4px',
   cursor: 'pointer',
   alignContent: 'center',
   justifyItems: 'center',
-  alignSelf: 'center'
+  alignSelf: 'center',
+  textAlign: 'center'
 };
 
 
@@ -119,8 +121,12 @@ function DragAndDrop() {
   return (
     <section className="container">
       <div style={dropzoneContainer} {...getRootProps()}>
-        <input {...getInputProps()} />
-        <p>Drag and drop some files here, or click to select files</p>
+        <input accept='image/*' {...getInputProps()} />
+        <Button auto color={'secondary'} css={{borderRadius: '$sm'}}>
+          Upload photos
+        </Button>
+        <Spacer y={0.5} />
+        <Text color='secondary'>Or drag and drop up to 5 photos</Text>
       </div>
       <aside style={thumbsContainer}>{thumbs}</aside>
     </section>
