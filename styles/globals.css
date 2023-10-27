@@ -66,3 +66,29 @@ a {
     display: none;
   }
 }
+
+.bp3-tag-input {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.custom-input {
+  border: black;
+  background-color: #000;
+  background: #000;
+  outline: none;
+  font-size: 16px; /* Adjust the font size */
+  padding: 10px; /* Adjust the padding */
+  color: #333; /* Text color */
+}
+
+.custom-tag {
+  background-color: #000; /* Background color for tags */
+  border: #000;
+  color: #000;
+  margin: 5px; /* Adjust margin as needed */
+  padding: 5px; /* Adjust padding as needed */
+  border-radius: 4px;
+}

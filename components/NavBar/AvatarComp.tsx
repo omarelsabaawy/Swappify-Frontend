@@ -39,7 +39,7 @@ const AvatarComp = () => {
                   {((user?.email)?.split('@')[0])?.toLocaleUpperCase()}
                 </Text>
               </Dropdown.Item>
-              <Dropdown.Item key="/User/List_New_Item" withDivider css={{ textTransform: 'uppercase', color: '$primary'}}>List new Item</Dropdown.Item>
+              <Dropdown.Item key="/User/List_New_Item" withDivider css={{ textTransform: 'uppercase', color: '$secondarySolidHover'}}>List new Item</Dropdown.Item>
               <Dropdown.Item key="WishList" withDivider>
                 My WishList 
               </Dropdown.Item>

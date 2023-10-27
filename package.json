@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@enipx/react-tags-input": "^1.0.1",
     "@mui/material": "^5.14.14",
     "@nextui-org/react": "^1.0.0-beta.10",
     "js-cookie": "^3.0.5",

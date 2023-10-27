@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DragAndDrop from '../../components/Add-Items/DragAndDrop'
 import {  Container, Dropdown, Grid, Input, Row, Spacer, Text, Textarea } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 import TopLogo from './TopLogo';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
+import { TagsInput } from "@enipx/react-tags-input"
+
 
 function List_New_Item() {
 
   const router = useRouter();
+
+  const [hashTags, setHashTags] = useState<any[]>([]);
 
   const handleBackButtonClick = () => {
     router.back();
@@ -26,7 +30,7 @@ function List_New_Item() {
   };
 
   return (
-    <Container css={{maxWidth: '100%', margin: 0, padding: 0}}>
+    <Container css={{maxWidth: '100%', margin: 0, padding: 0, marginBottom: '5%',}}>
       <Container css={{ maxWidth: '100%', height: '50px', backgroundColor: '$secondary', paddingTop: '$3', position: 'relative' }}>
         <Container css={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
           <span><TopLogo /></span>
@@ -42,7 +46,7 @@ function List_New_Item() {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-        <button type='button' onClick={handleBackButtonClick} style={{ backgroundColor: 'transparent', border: 'none', cursor: 'pointer', marginTop: '1rem', marginLeft: '1rem' }}>
+        <button type='button' onClick={handleBackButtonClick} style={{ backgroundColor: 'transparent', color: "white", border: 'none', cursor: 'pointer', marginTop: '1rem', marginLeft: '1rem' }}>
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="5" y1="5" x2="19" y2="19"></line>
             <line x1="5" y1="19" x2="19" y2="5"></line>
@@ -51,7 +55,7 @@ function List_New_Item() {
       </div>
       </Container>
 
-      <Container css={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '120vh' }}>
+      <Container css={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
        <Container
           css={{
             display: 'flex',
@@ -59,12 +63,12 @@ function List_New_Item() {
             justifyContent: 'space-between', // This will place items on the left and right
             boxSizing: 'border-box',
             width: '70%',
-            marginTop: '1%',
+            marginTop: '3%',
             marginBottom: '$8',
             '@smMax': {
               maxWidth: '100%',
               width: '100%',
-              marginTop: '1%',
+              marginTop: '5%',
             },
           }}
         >
@@ -90,7 +94,6 @@ function List_New_Item() {
               </Dropdown.Button>
               <Dropdown.Menu
                 aria-label="Single selection actions"
-                color="secondary"
                 disallowEmptySelection
                 selectionMode="single"
                 selectedKeys={selected}
@@ -101,8 +104,6 @@ function List_New_Item() {
               </Dropdown.Menu>
             </Dropdown>
         </Container>
-
-
 
         <Row>
           <Text h4 color='default' css={{marginLeft: '17%', "@smMax":{marginLeft: '$10'}}}>Photos :</Text>
@@ -137,8 +138,36 @@ function List_New_Item() {
               />
             </Grid>
             <Spacer />
-            <Grid>
-              
+          <Grid>
+            <label style={{ marginLeft: '5px', fontSize: '14px'}}>
+              Hashtags
+              <span style={{ color: 'grey' }}> (optional)</span>
+            </label>
+            <Spacer y={0.1} />
+            <TagsInput
+              placeholder='Add up to 5 hashtags'
+                value={hashTags}
+                onChange={setHashTags}
+                style={{
+                  border: `3px solid #262626`,
+                  minHeight: '55px',
+                  borderRadius: '1rem',
+                  fontSize: '0.9rem',
+                  padding: '0 1rem'
+                }}
+                hoverStyle={{
+                  border: `3px solid white`,
+                }}
+                focusStyle={{
+                  border: `3px solid white`,
+                }}
+                tagStyle={{
+                  border: `2px solid white`,
+                  borderRadius: '1.9rem',
+                  paddingLeft: '0.5rem',
+                  paddingRight: '0.5rem',
+                }}
+              />
             </Grid>
         </Container>
       </Container>

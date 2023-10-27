@@ -1,6 +1,6 @@
 import { Button, Container, Spacer, Text } from '@nextui-org/react';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 const thumbsContainer: React.CSSProperties = {
@@ -75,17 +75,20 @@ const dropzoneContainer: React.CSSProperties = {
 function DragAndDrop() {
   const [files, setFiles] = useState<any[]>([]);
   const { getRootProps, getInputProps } = useDropzone({
-  onDrop: (acceptedFiles: any[]) => {
-    if (files.length + acceptedFiles.length > 5) {
-      // You can display a message or alert the user that they have reached the limit
-      alert('Maximum images allowed are 5.');
-    } else {
-      setFiles((prevFiles) => [
-        ...prevFiles,
-        ...acceptedFiles.map((file) => Object.assign(file, { preview: URL.createObjectURL(file) })),
-      ]);
-    }
-  },
+    accept: {
+      'image/*': []
+    },
+    onDrop: (acceptedFiles: any[]) => {
+      if (files.length + acceptedFiles.length > 5) {
+        // You can display a message or alert the user that they have reached the limit
+        alert('Maximum images allowed are 5.');
+      } else {
+        setFiles((prevFiles) => [
+          ...prevFiles,
+          ...acceptedFiles.map((file) => Object.assign(file, { preview: URL.createObjectURL(file) })),
+        ]);
+      }
+    },
 });
 
 
@@ -118,11 +121,26 @@ function DragAndDrop() {
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
   }, [files]);
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // Function to trigger the input click event
+  const triggerInputClick = () => {
+    if (inputRef.current) {
+      inputRef.current.click();
+    }
+  };
+
   return (
     <section className="container">
       <div style={dropzoneContainer} {...getRootProps()}>
-        <input accept='image/*' {...getInputProps()} />
-        <Button auto color={'secondary'} css={{borderRadius: '$sm'}}>
+        {/* Use the inputRef to get a reference to the input element */}
+        <input type='file' accept='image/*'  {...getInputProps()} ref={inputRef} />
+        <Button
+          auto
+          color={'secondary'}
+          css={{borderRadius: '$sm'}}
+          onClick={triggerInputClick} // Trigger the click event on button click
+        >
           Upload photos
         </Button>
         <Spacer y={0.5} />
