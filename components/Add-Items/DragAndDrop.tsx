@@ -62,8 +62,8 @@ const dropzoneContainer: React.CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
   height: '250px', // Adjust the height as needed
-  border: '2px groove white', // Dashed purple border
-  borderRadius: '4px',
+  border: '3px solid #262626', // Dashed purple border
+  borderRadius: '1rem',
   cursor: 'pointer',
   alignContent: 'center',
   justifyItems: 'center',
