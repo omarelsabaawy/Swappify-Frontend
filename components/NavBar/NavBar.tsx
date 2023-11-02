@@ -53,12 +53,8 @@ const NavBar = () => {
         </Button>
         <SwappifyLogo />
       </Navbar.Brand>
-      <Navbar.Content hideIn="sm" variant="highlight">  
-        <Navbar.Item
-          css={{
-            paddingTop: '$5'
-        }}
-        >
+      <Navbar.Content hideIn="sm" variant="default">  
+        <Navbar.Item>
           <Link
               href={{
                 pathname: '/',
@@ -67,11 +63,8 @@ const NavBar = () => {
               Home
             </Link>
           </Navbar.Item>
-        <Navbar.Item
-          css={{
-            paddingTop: '$5'
-          }}
-        ><Link
+        <Navbar.Item>
+          <Link
               href={{
                 pathname: '/Shop/Swap',
               }}
@@ -79,22 +72,15 @@ const NavBar = () => {
               Swapping
           </Link>
         </Navbar.Item>
-        <Navbar.Item
-            css={{
-              paddingTop: '$5'
-            }}
-        ><Link
+        <Navbar.Item>
+          <Link
               href={{
                 pathname: '/Shop/Buy',
               }}
             >
               Buying
             </Link></Navbar.Item>
-        <Navbar.Item
-          css={{
-            paddingTop: '$5'
-          }}
-        >
+        <Navbar.Item>
           <Link
               href={{
                 pathname: '/ContactUs',
