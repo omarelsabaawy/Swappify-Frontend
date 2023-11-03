@@ -11,7 +11,7 @@ function Categories() {
       <div className="scrolling-wrapper" style={{}}>
         {categories.map((category) => (
         <div className="card" key={category.name}>
-          <Link href="/" css={{ display: 'block', marginLeft: '$8', marginRight: "$8", "@smMax": {marginLeft: "$12", marginRight: "$4"} }}>
+          <Link href="/" css={{ display: 'block', marginLeft: '$8', marginRight: "$8", "@smMax": {marginLeft: "$12", marginRight: "$4", marginBottom: "$0"} }}>
             <Avatar
               src={category.image_url}
               css={{ size: '$40', "@smMax": {size: "$32"} }}
