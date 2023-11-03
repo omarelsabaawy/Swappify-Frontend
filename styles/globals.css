@@ -120,3 +120,21 @@ a {
 .scrolling-wrapper::-webkit-scrollbar {
   display: none;
 }
+
+.background {
+  height: 450px;
+  margin: 0;
+  background: linear-gradient(117deg, #ffffff 47%, #0072f5b0 47%);
+}
+@media (max-width: 768px) {
+  .background {
+    background: linear-gradient(20deg, #0072f5b0  40%, #ffffff 40%);
+  }
+}
+
+@media (max-width: 768px) {
+  .centerOnSmallScreens {
+    display: flex;
+    justify-content: 'center'
+  }
+}
