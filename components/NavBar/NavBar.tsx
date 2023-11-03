@@ -32,13 +32,18 @@ const NavBar = () => {
   const handler = () => setVisible(true);
 
   const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [zIndexForDrawer, setZIndexForDrawer] = useState("$max");
   const toggleDrawer = () => {
     setDrawerOpen(!isDrawerOpen);
+    if (zIndexForDrawer === "$max") {
+      setZIndexForDrawer("$1");
+    }else{
+      setZIndexForDrawer("$max");
+    }
   };
 
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
   };
 
   const navigateToSignUp = () => {
@@ -46,7 +51,7 @@ const NavBar = () => {
   }
 
   return (
-    <Navbar css={{zIndex: '$max'}} isBordered variant="floating">
+    <Navbar css={{zIndex: zIndexForDrawer}} isBordered variant="floating">
       <Navbar.Brand>
         <Button onClick={toggleDrawer} auto size={'sm'} style={{ backgroundColor: 'transparent', paddingLeft: '2px', paddingRight: '2px' }} className="menu-button">
           <RxHamburgerMenu size={20} />
