@@ -46,7 +46,7 @@ const NavBar = () => {
   }
 
   return (
-    <Navbar isBordered variant="floating">
+    <Navbar css={{zIndex: '$max'}} isBordered variant="floating">
       <Navbar.Brand>
         <Button onClick={toggleDrawer} auto size={'sm'} style={{ backgroundColor: 'transparent', paddingLeft: '2px', paddingRight: '2px' }} className="menu-button">
           <RxHamburgerMenu size={20} />

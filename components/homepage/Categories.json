@@ -1,0 +1,60 @@
+{
+  "categories": [
+    {
+      "name": "Electronics",
+      "image_url": "/images/electronics.jpg"
+    },
+    {
+      "name": "Clothes",
+      "image_url": "/images/Clothes.jpg"
+    },
+    {
+      "name": "Furniture",
+      "image_url": "/images/furniture.webp"
+    },
+    {
+      "name": "Video Games",
+      "image_url": "/images/VideoGames.jpg"
+    },
+    {
+      "name": "Sports & Outdoors",
+      "image_url": "/images/Sports&Outdoors.webp"
+    },
+    {
+      "name": "Books & Magazines",
+      "image_url": "/images/Books&Magazines.jpg"
+    },
+    {
+      "name": "Collectibles",
+      "image_url": "/images/collectibles.webp"
+    },
+    {
+      "name": "Home & Garden",
+      "image_url": "/images/Home&Garden.jpeg"
+    },
+    {
+      "name": "Musical Instruments",
+      "image_url": "/images/MusicalInstruments.jpg"
+    },
+    {
+      "name": "Antiques",
+      "image_url": "/images/Antiques.jpeg"
+    },
+    {
+      "name": "Computers & Accessories",
+      "image_url": "/images/laptop-accessories.jpg"
+    },
+    {
+      "name": "Automotive",
+      "image_url": "/images/Automotive.jpg"
+    },
+    {
+      "name": "Movies & DVDs",
+      "image_url": "/images/Movies&DVDs.webp"
+    },
+    {
+      "name": "Others",
+      "image_url": "/images/others.png"
+    }
+  ]
+}

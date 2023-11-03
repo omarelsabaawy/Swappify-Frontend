@@ -4,6 +4,8 @@ import { Container, Text, Button, Grid, Col } from '@nextui-org/react';
 import InfoCard from '../components/InfoCard';
 import { useRouter } from 'next/router';
 import { useUserContext } from '../Context/UserContext';
+import Categories from '../components/homepage/Categories';
+import Banner from '../components/homepage/Banner';
 
 
 const Home = () => {
@@ -20,9 +22,11 @@ const Home = () => {
   const {user} = useUserContext();
 
   return (
-    <Container>
+    <>
+      
+          <Container>
       {/* Jumbotron */}
-      <Grid.Container justify="center" css={{"height": "500px"}}>
+      <Grid.Container justify="center" css={{"height": "540px", "@mdMax": {marginBottom: "$12"}, "@smMax": {marginBottom: "$36"}}}>
         <Grid xs={12} sm={6} alignItems="center">
           <Col css={{"width": "100%"}}>
             <Text weight={"bold"} size={70} css={{ "textAlign": "center", textGradient: "45deg, $blue600 -20%, $pink600 50%",}}>Swappify Your Gear,</Text>
@@ -37,7 +41,6 @@ const Home = () => {
           </Col>
         </Grid>
       </Grid.Container>
-
       {/* 3 Displaying Product Cards */}
       {/* <Grid.Container gap={2}>
         <Grid xs={12} sm={4}>
@@ -65,7 +68,11 @@ const Home = () => {
           />
         </Grid>
       </Grid.Container> */}
-    </Container>
+      
+      </Container>
+      <Banner />
+      <Categories />
+    </>
   )
 }
 
