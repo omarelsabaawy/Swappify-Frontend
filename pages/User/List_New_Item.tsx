@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import DragAndDrop from '../../components/Add-Items/DragAndDrop'
-import {  Button, Card, Container, Divider, Dropdown, Grid, Input, Row, Spacer, Text, Textarea } from '@nextui-org/react'
+import {  Button, Card, Container, Dropdown, Grid, Input, Row, Spacer, Text, Textarea } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 import TopLogo from './TopLogo';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import { TagsInput } from "@enipx/react-tags-input"
+import categoriesData from './Categories.json';
 
 function List_New_Item() {
 
@@ -60,9 +61,10 @@ function List_New_Item() {
 
   const [selectedCondition,setSelectionCondition] = useState<any>("");
 
+  const categories = categoriesData.categories;
 
   return (
-    <Container css={{maxWidth: '100%', margin: 0, padding: 0, marginBottom: '5%',}}>
+    <Container css={{height: "2000px",maxWidth: '100%', margin: 0, padding: 0, marginBottom: '5%',}}>
       <Container css={{ maxWidth: '100%', height: '50px', backgroundColor: '$secondary', paddingTop: '$3', position: 'relative' }}>
         <Container css={{ display: 'flex', alignItems: 'center', justifyContent: 'center', "@smMax":{display: 'none'}}}>
           <span><TopLogo /></span>
@@ -220,8 +222,9 @@ function List_New_Item() {
                     selectedKeys={selected}
                     onSelectionChange={handleSelectionChange}
                   >
-                    <Dropdown.Item key="Swap" description='Want to Swap this Item'>Swap</Dropdown.Item>
-                    <Dropdown.Item key="Sell" description='Want to Sell this Item'>Sell</Dropdown.Item>
+                    {categories.map((category) => (
+                      <Dropdown.Item key={category.name}>{category.name}</Dropdown.Item>
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Grid>

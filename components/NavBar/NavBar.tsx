@@ -51,7 +51,7 @@ const NavBar = () => {
   }
 
   return (
-    <Navbar css={{zIndex: zIndexForDrawer}} isBordered variant="floating">
+    <Navbar css={{zIndex: zIndexForDrawer}} isBordered variant="static">
       <Navbar.Brand>
         <Button onClick={toggleDrawer} auto size={'sm'} style={{ backgroundColor: 'transparent', paddingLeft: '2px', paddingRight: '2px' }} className="menu-button">
           <RxHamburgerMenu size={20} />
@@ -105,7 +105,7 @@ const NavBar = () => {
       >
         {user ? (
           <>
-            <Tooltip content={"Search a product."} rounded color="secondary" placement='bottom'>
+            <Tooltip css={{zIndex: "$max"}} content={"Search a product."} rounded color="secondary" placement='bottom'>
                 <button style={{
                   backgroundColor: 'transparent',
                   borderColor: 'transparent',

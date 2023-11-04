@@ -4,7 +4,7 @@ import React from 'react';
 
 function GetTheApp() {
   return (
-    <div className='background'>
+    <div className='background'style={{ display: 'flex', flexDirection: 'column' }}>
       <Container>
         <Grid.Container>
             <Grid xs={12} sm={6} md={6}>
@@ -17,11 +17,18 @@ function GetTheApp() {
                     </div>
                 </Container>
             </Grid>
-            <Grid xs={12} sm={6} md={6} css={{ justifyContent: 'center',"@smMax": {marginBottom: "$10"} }}>
-                {/* <div>
-                <Image src={"/images/get-the-app-3-desktop.webp"} alt='appBanner' height={"416px"} width={"550px"} layout='responsive' />
-                </div> */}
-            </Grid>
+             <Grid
+            xs={12}
+            sm={6}
+            md={6}
+            css={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            {/* <Image src={'/images/get-the-app-3-desktop.webp'} alt='get the app' layout="intrinsic" width={500} height={400} /> */}
+          </Grid>
         </Grid.Container>
       </Container>
     </div>
