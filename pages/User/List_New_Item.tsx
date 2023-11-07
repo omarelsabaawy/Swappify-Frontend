@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
-import DragAndDrop from '../../components/Add-Items/DragAndDrop'
+import React, { useState } from 'react';
+import DragAndDrop from '../../components/Add-Items/DragAndDrop';
 import {  Button, Card, Container, Dropdown, Grid, Input, Row, Spacer, Text, Textarea } from '@nextui-org/react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import TopLogo from './TopLogo';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
-import { TagsInput } from "@enipx/react-tags-input"
+import { TagsInput } from "@enipx/react-tags-input";
+
 import categoriesData from './Categories.json';
+import colorsData from './Colors.json';
 
 function List_New_Item() {
 
@@ -19,7 +21,6 @@ function List_New_Item() {
   };
 
   const [selected, setSelected] = React.useState(new Set(["Swap"]));
-  const [hide, setHide] = useState(false);
 
   const selectedValue = React.useMemo(
     () => Array.from(selected).join(", ").replaceAll("_", " "),
@@ -59,9 +60,16 @@ function List_New_Item() {
   ];
 
 
-  const [selectedCondition,setSelectionCondition] = useState<any>("");
+  const [selectedCondition, setSelectionCondition] = useState<any>("");
+  const [selectColor, setSelectColor] = useState<any>("");
+
+  const handleColorSelection = (newSelection: any) => {
+    selectColor(newSelection.name);
+  }
 
   const categories = categoriesData.categories;
+  const colors = colorsData.colors;
+
 
   return (
     <Container css={{height: "2000px",maxWidth: '100%', margin: 0, padding: 0, marginBottom: '5%',}}>
@@ -313,6 +321,46 @@ function List_New_Item() {
                   </Dropdown.Menu>
                 </Dropdown>
             </Container>
+          </Grid>
+          <Spacer />
+          <Grid>
+            <label style={{ marginLeft: '5px', fontSize: '14px' }}>Color </label>
+            <Dropdown placement="bottom">
+              <Dropdown.Button
+                css={{ width: '100%', height: '45px', marginLeft: "5px", backgroundColor: selectColor ? `${selectColor}` : "black" , border: '3px solid #262626', marginTop: "$3" }}
+              >
+                {!selectColor ? "Select the item Color" : selectColor}
+              </Dropdown.Button>
+              <Dropdown.Menu
+                aria-label="Color selection"
+                disallowEmptySelection
+                selectionMode="single"
+                onSelectionChange={(newSelected) => {
+                  const selectedColor = Array.from(newSelected)[0]; // Get the selected condition
+                  setSelectColor(selectedColor); // Update the selected condition in the state
+                }}
+              >
+                {colors.map((color) => (
+                 <Dropdown.Item key={color.name}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div>{color.name}</div>
+                    <div
+                      style={{
+                        width: '20px',
+                        height: '20px',
+                        backgroundColor: color.hex,
+                        marginLeft: '10px',
+                      }}
+                    ></div>
+                  </div>
+                </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+          </Grid>
+          <Spacer />
+          <Grid>
+
           </Grid>
         </Container>
       </Container>

@@ -185,7 +185,7 @@ const Buying = () => {
                             weight="bold"
                             transform="uppercase"
                         >
-                            Swap Now
+                            Buy Now
                         </Text>
                         </Button>
                     </Row>
