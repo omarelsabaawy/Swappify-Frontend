@@ -14,6 +14,7 @@
     "@enipx/react-tags-input": "^1.0.1",
     "@mui/material": "^5.14.14",
     "@nextui-org/react": "^1.0.0-beta.10",
+    "cloudinary-react": "^1.8.1",
     "js-cookie": "^3.0.5",
     "next": "12.3.1",
     "react": "18.2.0",

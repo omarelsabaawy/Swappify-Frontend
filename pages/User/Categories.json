@@ -1,59 +1,1149 @@
 {
   "categories": [
     {
-      "name": "Electronics",
-      "image_url": "/images/electronics.jpg"
+  "category": "Electronics",
+  "subCategories": [
+    {
+      "name": "Smartphones",
+      "subCategories": [
+        "Android",
+        "iOS",
+        "Windows",
+        "Other",
+        "Foldable Phones",
+        "Budget Smartphones",
+        "Flagship Phones",
+        "Gaming Phones",
+        "Camera Phones",
+        "Business Phones",
+        "Rugged Phones",
+        "Dual-SIM Phones",
+        "Phablets",
+        "Waterproof Phones",
+        "Senior Phones",
+        "Others"
+      ]
     },
     {
-      "name": "Clothes",
+      "name": "Laptops",
+      "subCategories": [
+        "Windows",
+        "Macbook",
+        "Chromebook",
+        "Gaming Laptops",
+        "Ultrabooks",
+        "2-in-1 Laptops",
+        "Business Laptops",
+        "Student Laptops",
+        "Programming Laptops",
+        "Laptops for Artists",
+        "Budget Laptops",
+        "High-Performance Laptops",
+        "Touchscreen Laptops",
+        "Convertible Laptops",
+        "Gaming Ultrabooks",
+        "Others"
+      ]
+    },
+    {
+      "name": "Headphones",
+      "subCategories": [
+        "Over-Ear",
+        "On-Ear",
+        "In-Ear",
+        "Wireless",
+        "Noise-Canceling",
+        "Sports",
+        "Gaming Headsets",
+        "Studio Monitors",
+        "Earbuds",
+        "Bone Conduction Headphones",
+        "DJ Headphones",
+        "Fitness Headphones",
+        "Kids Headphones",
+        "Fashion Headphones",
+        "Others"
+      ]
+    },
+    {
+      "name": "Cameras",
+      "subCategories": [
+        "DSLR",
+        "Mirrorless",
+        "Point-and-Shoot",
+        "Action Cameras",
+        "360 Cameras",
+        "Film Cameras",
+        "Security Cameras",
+        "Webcams",
+        "Instant Cameras",
+        "Vlogging Cameras",
+        "Bridge Cameras",
+        "Compact System Cameras",
+        "Medium Format Cameras",
+        "CCTV Cameras",
+        "Others"
+      ]
+    },
+    {
+      "name": "Gaming Consoles",
+      "subCategories": [
+        "PlayStation",
+        "Xbox",
+        "Nintendo Switch",
+        "PC Gaming",
+        "Handheld Consoles",
+        "Retro Gaming",
+        "VR Gaming",
+        "Gaming Accessories",
+        "Gaming PCs",
+        "Classic Gaming Consoles",
+        "Cloud Gaming",
+        "Portable Consoles",
+        "Streaming Devices",
+        "Others"
+      ]
+    },
+    {
+      "name": "Wearables",
+      "subCategories": [
+        "Smartwatches",
+        "Fitness Trackers",
+        "VR Headsets",
+        "Augmented Reality",
+        "Hearables",
+        "Health Monitors",
+        "Smart Clothing",
+        "Wearable Cameras",
+        "Smart Jewelry",
+        "Sports Wearables",
+        "Pet Trackers",
+        "Others"
+      ]
+    },
+    {
+      "name": "Audio Devices",
+      "subCategories": [
+        "Speakers",
+        "Soundbars",
+        "Home Theater Systems",
+        "MP3 Players",
+        "Hi-Fi Systems",
+        "Voice Assistants",
+        "Record Players",
+        "Microphones",
+        "Audio Receivers",
+        "DJ Equipment",
+        "Karaoke Machines",
+        "Others"
+      ]
+    }
+  ],
+  "image_url": "/images/electronics.jpg"
+},
+    {
+      "category": "Clothes",
+      "subCategories": [
+        {
+          "name": "Shirts",
+          "subCategories": [
+            "T-Shirts",
+            "Button-Down",
+            "Polo",
+            "Long Sleeve",
+            "Tank Tops",
+            "Hawaiian Shirts",
+            "Flannel Shirts",
+            "Denim Shirts",
+            "Oxford Shirts",
+            "Others"
+          ]
+        },
+        {
+          "name": "Pants",
+          "subCategories": [
+            "Jeans",
+            "Chinos",
+            "Shorts",
+            "Leggings",
+            "Joggers",
+            "Cargo Pants",
+            "Dress Pants",
+            "Sweatpants",
+            "Culottes",
+            "Others"
+          ]
+        },
+        {
+          "name": "Dresses",
+          "subCategories": [
+            "Casual",
+            "Formal",
+            "Summer",
+            "Evening",
+            "Maxi Dresses",
+            "Midi Dresses",
+            "Bodycon Dresses",
+            "Shift Dresses",
+            "Wrap Dresses",
+            "Others"
+          ]
+        },
+        {
+          "name": "Footwear",
+          "subCategories": [
+            "Sneakers",
+            "Boots",
+            "Sandals",
+            "Flats",
+            "Heels",
+            "Loafers",
+            "Slippers",
+            "Oxfords",
+            "Athletic Shoes",
+            "Others"
+          ]
+        },
+        {
+          "name": "Accessories",
+          "subCategories": [
+            "Hats",
+            "Scarves",
+            "Gloves",
+            "Sunglasses",
+            "Belts",
+            "Watches",
+            "Jewelry",
+            "Handbags",
+            "Backpacks",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/clothes.jpg"
     },
     {
-      "name": "Furniture",
+      "category": "Furniture",
+      "subCategories": [
+        {
+          "name": "Living Room",
+          "subCategories": [
+            "Sofas",
+            "Chairs",
+            "Coffee Tables",
+            "Bookshelves",
+            "TV Stands",
+            "Ottomans",
+            "End Tables",
+            "Console Tables",
+            "Accent Furniture",
+            "Floor Lamps",
+            "Rugs",
+            "Media Storage",
+            "Futons",
+            "Bean Bags",
+            "Entertainment Centers",
+            "Others"
+          ]
+        },
+        {
+          "name": "Bedroom",
+          "subCategories": [
+            "Beds",
+            "Dressers",
+            "Nightstands",
+            "Mattresses",
+            "Wardrobes",
+            "Bedroom Sets",
+            "Vanities",
+            "Chaises",
+            "Bedroom Decor",
+            "Accent Pillows",
+            "Bedding Sets",
+            "Mirrors",
+            "Chests",
+            "Curtains",
+            "Bedroom Benches",
+            "Others"
+          ]
+        },
+        {
+          "name": "Dining Room",
+          "subCategories": [
+            "Dining Tables",
+            "Dining Chairs",
+            "Buffets",
+            "China Cabinets",
+            "Bar Stools",
+            "Dining Sets",
+            "Sideboards",
+            "Bar Carts",
+            "Dining Decor",
+            "Table Linens",
+            "Candles & Holders",
+            "Dinnerware",
+            "Flatware",
+            "Drinkware",
+            "Serveware",
+            "Others"
+          ]
+        },
+        {
+          "name": "Home Office",
+          "subCategories": [
+            "Desks",
+            "Office Chairs",
+            "Bookcases",
+            "File Cabinets",
+            "Desk Accessories",
+            "Office Decor",
+            "Standing Desks",
+            "Lamps",
+            "Shelving",
+            "Bulletin Boards",
+            "Desk Organizers",
+            "Cable Management",
+            "Wall Shelves",
+            "Others"
+          ]
+        },
+        {
+          "name": "Outdoor",
+          "subCategories": [
+            "Patio Sets",
+            "Outdoor Seating",
+            "Outdoor Tables",
+            "Hammocks",
+            "Umbrellas",
+            "Fire Pits",
+            "Outdoor Decor",
+            "Outdoor Storage",
+            "Garden Furniture",
+            "Planters",
+            "Porch Swings",
+            "Grills",
+            "Outdoor Rugs",
+            "Patio Heaters",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/furniture.webp"
     },
     {
-      "name": "Video Games",
+      "category": "Video Games",
+      "subCategories": [
+        {
+          "name": "Gaming Consoles",
+          "subCategories": [
+            "PlayStation",
+            "Xbox",
+            "Nintendo Switch",
+            "PC Gaming",
+            "Handheld Consoles",
+            "Retro Gaming",
+            "VR Gaming",
+            "Gaming Accessories",
+            "Gaming PCs",
+            "Gaming Consoles Mods",
+            "Others"
+          ]
+        },
+        {
+          "name": "Games",
+          "subCategories": [
+            "Action",
+            "Adventure",
+            "Role-Playing",
+            "Sports",
+            "Simulation",
+            "Strategy",
+            "Horror",
+            "Indie",
+            "Multiplayer",
+            "Game Expansions",
+            "Others"
+          ]
+        },
+        {
+          "name": "Accessories",
+          "subCategories": [
+            "Controllers",
+            "Headsets",
+            "Keyboards",
+            "Mice",
+            "Gaming Chairs",
+            "VR Headsets",
+            "Cables",
+            "Streaming Gear",
+            "Game Capture",
+            "Accessories Mods",
+            "Others"
+          ]
+        },
+        {
+          "name": "Merchandise",
+          "subCategories": [
+            "Apparel",
+            "Posters",
+            "Figures",
+            "Collectibles",
+            "Artbooks",
+            "Soundtracks",
+            "Plush Toys",
+            "Jewelry",
+            "Toys",
+            "Merchandise Mods",
+            "Others"
+          ]
+        },
+        {
+          "name": "Console Mods",
+          "subCategories": [
+            "Custom Shells",
+            "LED Mods",
+            "Controller Mods",
+            "Skin Decals",
+            "Console Stands",
+            "Cooling Mods",
+            "Game Mods",
+            "Hardware Mods",
+            "VR Mods",
+            "Console Mods Accessories",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/VideoGames.jpg"
     },
     {
-      "name": "Sports & Outdoors",
+      "category": "Sports & Outdoors",
+      "subCategories": [
+        {
+          "name": "Outdoor Recreation",
+          "subCategories": [
+            "Camping",
+            "Hiking",
+            "Cycling",
+            "Fishing",
+            "Hunting",
+            "Boating",
+            "Scuba Diving",
+            "Surfing",
+            "Climbing",
+            "Others"
+          ]
+        },
+        {
+          "name": "Team Sports",
+          "subCategories": [
+            "Soccer",
+            "Football",
+            "Basketball",
+            "Baseball",
+            "Softball",
+            "Volleyball",
+            "Hockey",
+            "Rugby",
+            "Cricket",
+            "Others"
+          ]
+        },
+        {
+          "name": "Fitness",
+          "subCategories": [
+            "Exercise Equipment",
+            "Yoga & Pilates",
+            "Fitness Trackers",
+            "Weights",
+            "Cardio Machines",
+            "Resistance Bands",
+            "Workout Apparel",
+            "Gym Bags",
+            "Fitness Accessories",
+            "Others"
+          ]
+        },
+        {
+          "name": "Outdoor Gear",
+          "subCategories": [
+            "Tents",
+            "Backpacks",
+            "Sleeping Bags",
+            "Outdoor Clothing",
+            "Camping Stoves",
+            "Hiking Boots",
+            "Coolers",
+            "Outdoor Furniture",
+            "Picnic Sets",
+            "Others"
+          ]
+        },
+        {
+          "name": "Water Sports",
+          "subCategories": [
+            "Kayaking",
+            "Canoeing",
+            "Surfing",
+            "Paddleboarding",
+            "Snorkeling",
+            "Waterskiing",
+            "Jet Skiing",
+            "Wetsuits",
+            "Water Toys",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/Sports&Outdoors.webp"
     },
     {
-      "name": "Books & Magazines",
+      "category": "Books & Magazines",
+      "subCategories": [
+        {
+          "name": "Fiction",
+          "subCategories": [
+            "Mystery",
+            "Thriller",
+            "Romance",
+            "Science Fiction",
+            "Fantasy",
+            "Historical Fiction",
+            "Dystopian",
+            "Adventure",
+            "Horror",
+            "Others"
+          ]
+        },
+        {
+          "name": "Non-Fiction",
+          "subCategories": [
+            "Biography",
+            "Memoir",
+            "Self-Help",
+            "History",
+            "Science",
+            "Cookbooks",
+            "Travel",
+            "Autobiography",
+            "Essays",
+            "Others"
+          ]
+        },
+        {
+          "name": "Magazines",
+          "subCategories": [
+            "Fashion",
+            "Home & Garden",
+            "Technology",
+            "Health",
+            "Entertainment",
+            "Sports",
+            "Science",
+            "Art",
+            "Business",
+            "Others"
+          ]
+        },
+        {
+          "name": "Children's Books",
+          "subCategories": [
+            "Picture Books",
+            "Middle Grade",
+            "Young Adult",
+            "Children's Fantasy",
+            "Educational",
+            "Interactive Books",
+            "Graphic Novels",
+            "Classic Stories",
+            "Poetry",
+            "Others"
+          ]
+        },
+        {
+          "name": "Rare & Collectible",
+          "subCategories": [
+            "First Editions",
+            "Signed Copies",
+            "Limited Editions",
+            "Vintage Books",
+            "Antique Books",
+            "Illustrated Editions",
+            "Special Editions",
+            "Unique Bindings",
+            "Book Sets",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/Books&Magazines.jpg"
-    },
-    {
-      "name": "Collectibles",
+    },{
+      "category": "Collectibles",
+      "subCategories": [
+        {
+          "name": "Coins & Currency",
+          "subCategories": [
+            "US Coins",
+            "World Coins",
+            "Paper Money",
+            "Ancient Coins",
+            "Coin Sets",
+            "Exonumia",
+            "Hobo Nickels",
+            "Error Coins",
+            "Military Payment Certificates",
+            "Others"
+          ]
+        },
+        {
+          "name": "Stamps",
+          "subCategories": [
+            "US Stamps",
+            "World Stamps",
+            "Postal History",
+            "First Day Covers",
+            "Stamp Sheets",
+            "Topical Stamps",
+            "Error Stamps",
+            "Plate Blocks",
+            "Cinderella Stamps",
+            "Others"
+          ]
+        },
+        {
+          "name": "Toys & Games",
+          "subCategories": [
+            "Action Figures",
+            "Board Games",
+            "Dolls & Bears",
+            "Model Trains",
+            "Diecast Cars",
+            "LEGO",
+            "Video Game Collectibles",
+            "Comic Books",
+            "Trading Cards",
+            "Others"
+          ]
+        },
+        {
+          "name": "Art & Memorabilia",
+          "subCategories": [
+            "Autographs",
+            "Movie Posters",
+            "Concert Posters",
+            "Sports Memorabilia",
+            "Comic Art",
+            "Animation Art",
+            "Political Memorabilia",
+            "Historical Documents",
+            "Celebrity Memorabilia",
+            "Others"
+          ]
+        },
+        {
+          "name": "Collectible Figurines",
+          "subCategories": [
+            "Funko Pops",
+            "Precious Moments",
+            "Hummel Figurines",
+            "Lladro Figurines",
+            "Royal Doulton",
+            "Swarovski Figurines",
+            "Disney Figurines",
+            "Vintage Figurines",
+            "Porcelain Figurines",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/collectibles.webp"
     },
     {
-      "name": "Home & Garden",
+      "category": "Home & Garden",
+      "subCategories": [
+        {
+          "name": "Furniture",
+          "subCategories": [
+            "Living Room Furniture",
+            "Bedroom Furniture",
+            "Dining Room Furniture",
+            "Outdoor Furniture",
+            "Office Furniture",
+            "Antique Furniture",
+            "Modern Furniture",
+            "Rustic Furniture",
+            "Mid-Century Furniture",
+            "Others"
+          ]
+        },
+        {
+          "name": "Home Decor",
+          "subCategories": [
+            "Wall Art",
+            "Mirrors",
+            "Clocks",
+            "Candles & Holders",
+            "Vases",
+            "Sculptures",
+            "Decorative Bowls",
+            "Artificial Plants",
+            "Rugs & Carpets",
+            "Others"
+          ]
+        },
+        {
+          "name": "Kitchen & Dining",
+          "subCategories": [
+            "Cookware",
+            "Dinnerware",
+            "Flatware",
+            "Kitchen Appliances",
+            "Cutlery",
+            "Barware",
+            "Bakeware",
+            "Kitchen Tools",
+            "Table Linens",
+            "Others"
+          ]
+        },
+        {
+          "name": "Gardening",
+          "subCategories": [
+            "Plants",
+            "Pots & Planters",
+            "Garden Tools",
+            "Outdoor Structures",
+            "Lawn Ornaments",
+            "Garden Decor",
+            "Watering Equipment",
+            "Fertilizers",
+            "Seeds",
+            "Others"
+          ]
+        },
+        {
+          "name": "Bedding & Linens",
+          "subCategories": [
+            "Bedding Sets",
+            "Sheets & Pillowcases",
+            "Blankets & Throws",
+            "Duvets & Comforters",
+            "Quilts & Coverlets",
+            "Pillows",
+            "Mattress Toppers",
+            "Bedroom Curtains",
+            "Bed Skirts",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/Home&Garden.jpeg"
-    },
-    {
-      "name": "Musical Instruments",
+    },{
+      "category": "Musical Instruments",
+      "subCategories": [
+        {
+          "name": "Guitars",
+          "subCategories": [
+            "Acoustic Guitars",
+            "Electric Guitars",
+            "Classical Guitars",
+            "Bass Guitars",
+            "Resonator Guitars",
+            "Archtop Guitars",
+            "Travel Guitars",
+            "12-String Guitars",
+            "Left-Handed Guitars",
+            "Others"
+          ]
+        },
+        {
+          "name": "Keyboards & Pianos",
+          "subCategories": [
+            "Digital Pianos",
+            "Keyboards",
+            "Synthesizers",
+            "Stage Pianos",
+            "MIDI Controllers",
+            "Accordion",
+            "Harpsichords",
+            "Organs",
+            "Grand Pianos",
+            "Others"
+          ]
+        },
+        {
+          "name": "Wind Instruments",
+          "subCategories": [
+            "Saxophones",
+            "Trumpets",
+            "Flutes",
+            "Clarinets",
+            "Trombones",
+            "Oboes",
+            "Harmonicas",
+            "Bagpipes",
+            "Didgeridoos",
+            "Others"
+          ]
+        },
+        {
+          "name": "String Instruments",
+          "subCategories": [
+            "Violins",
+            "Violas",
+            "Cellos",
+            "Double Basses",
+            "Ukuleles",
+            "Mandolins",
+            "Banjos",
+            "Harp",
+            "Erhu",
+            "Others"
+          ]
+        },
+        {
+          "name": "Percussion Instruments",
+          "subCategories": [
+            "Drum Sets",
+            "Cajons",
+            "Bongos",
+            "Djembes",
+            "Congas",
+            "Marimbas",
+            "Xylophones",
+            "Timpani",
+            "Steel Drums",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/MusicalInstruments.jpg"
     },
     {
-      "name": "Antiques",
+      "category": "Antiques",
+      "subCategories": [
+        {
+          "name": "Furniture",
+          "subCategories": [
+            "Chairs",
+            "Tables",
+            "Cabinets",
+            "Desks",
+            "Dressers",
+            "Sofas",
+            "Armoires",
+            "Buffets",
+            "Secretaires",
+            "Others"
+          ]
+        },
+        {
+          "name": "Ceramics & Porcelain",
+          "subCategories": [
+            "China Sets",
+            "Teapots",
+            "Figurines",
+            "Vases",
+            "Plates",
+            "Bowls",
+            "Pitchers",
+            "Jugs",
+            "Cups & Saucers",
+            "Others"
+          ]
+        },
+        {
+          "name": "Glassware",
+          "subCategories": [
+            "Crystal",
+            "Carnival Glass",
+            "Cut Glass",
+            "Art Glass",
+            "Stemware",
+            "Decanters",
+            "Paperweights",
+            "Perfume Bottles",
+            "Glass Figurines",
+            "Others"
+          ]
+        },
+        {
+          "name": "Clocks & Watches",
+          "subCategories": [
+            "Wall Clocks",
+            "Mantel Clocks",
+            "Grandfather Clocks",
+            "Pocket Watches",
+            "Wristwatches",
+            "Desk Clocks",
+            "Cuckoo Clocks",
+            "Sundials",
+            "Hourglasses",
+            "Others"
+          ]
+        },
+        {
+          "name": "Textiles & Linens",
+          "subCategories": [
+            "Quilts",
+            "Rugs",
+            "Tablecloths",
+            "Embroidery",
+            "Lace",
+            "Samplers",
+            "Tapestries",
+            "Handkerchiefs",
+            "Doilies",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/Antiques.jpeg"
     },
-    {
-      "name": "Computers & Accessories",
+{
+      "category": "Computers & Accessories",
+      "subCategories": [
+        {
+          "name": "Laptops",
+          "subCategories": [
+            "Gaming Laptops",
+            "Ultrabooks",
+            "2-in-1 Laptops",
+            "Business Laptops",
+            "Chromebooks",
+            "Budget Laptops",
+            "Workstation Laptops",
+            "MacBooks",
+            "Student Laptops",
+            "Others"
+          ]
+        },
+        {
+          "name": "Desktops",
+          "subCategories": [
+            "Gaming Desktops",
+            "All-in-One PCs",
+            "Mini PCs",
+            "Budget Desktops",
+            "Business Desktops",
+            "Workstation Desktops",
+            "Mac Desktops",
+            "Home Theater PCs",
+            "DIY PC Components",
+            "Others"
+          ]
+        },
+        {
+          "name": "Monitors",
+          "subCategories": [
+            "Gaming Monitors",
+            "4K Monitors",
+            "Ultrawide Monitors",
+            "Curved Monitors",
+            "Business Monitors",
+            "Touchscreen Monitors",
+            "Portable Monitors",
+            "Design Monitors",
+            "Home Office Monitors",
+            "Others"
+          ]
+        },
+        {
+          "name": "Accessories",
+          "subCategories": [
+            "Keyboards",
+            "Mice",
+            "Webcams",
+            "Headsets",
+            "Speakers",
+            "Mousepads",
+            "Docking Stations",
+            "Graphics Tablets",
+            "Laptop Bags",
+            "Others"
+          ]
+        },
+        {
+          "name": "Components",
+          "subCategories": [
+            "Processors (CPUs)",
+            "Graphics Cards (GPUs)",
+            "Motherboards",
+            "RAM (Memory)",
+            "Storage (HDDs/SSDs)",
+            "Power Supplies",
+            "Cooling Systems",
+            "PC Cases",
+            "Networking Cards",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/laptop-accessories.jpg"
     },
     {
-      "name": "Automotive",
+      "category": "Automotive",
+      "subCategories": [
+        {
+          "name": "Cars",
+          "subCategories": [
+            "Sedans",
+            "SUVs",
+            "Trucks",
+            "Coupes",
+            "Convertibles",
+            "Hatchbacks",
+            "Electric Cars",
+            "Hybrid Cars",
+            "Vintage Cars",
+            "Others"
+          ]
+        },
+        {
+          "name": "Motorcycles",
+          "subCategories": [
+            "Cruisers",
+            "Sport Bikes",
+            "Touring Bikes",
+            "Dirt Bikes",
+            "Scooters",
+            "Choppers",
+            "Electric Motorcycles",
+            "Trikes",
+            "Vintage Motorcycles",
+            "Others"
+          ]
+        },
+        {
+          "name": "Parts & Accessories",
+          "subCategories": [
+            "Tires",
+            "Batteries",
+            "Brake Systems",
+            "Exhaust Systems",
+            "Suspension",
+            "Car Audio",
+            "Lights & Bulbs",
+            "Interior Accessories",
+            "Exterior Accessories",
+            "Others"
+          ]
+        },
+        {
+          "name": "Tools & Equipment",
+          "subCategories": [
+            "Diagnostic Tools",
+            "Hand Tools",
+            "Power Tools",
+            "Lifting Equipment",
+            "Tool Storage",
+            "Paint & Body Repair",
+            "Welding Equipment",
+            "Garage Equipment",
+            "Safety Equipment",
+            "Others"
+          ]
+        },
+        {
+          "name": "Car Care",
+          "subCategories": [
+            "Car Wash",
+            "Car Wax",
+            "Polishes",
+            "Interior Cleaners",
+            "Wheel & Tire Care",
+            "Paint Sealants",
+            "Detailing Kits",
+            "Pressure Washers",
+            "Drying Tools",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/Automotive.jpg"
-    },
-    {
-      "name": "Movies & DVDs",
+    },{
+      "category": "Movies & DVDs",
+      "subCategories": [
+        {
+          "name": "Action",
+          "subCategories": [
+            "Adventure",
+            "Superhero",
+            "Spy",
+            "Martial Arts",
+            "War",
+            "Crime",
+            "Heist",
+            "Thriller",
+            "Disaster",
+            "Others"
+          ]
+        },
+        {
+          "name": "Comedy",
+          "subCategories": [
+            "Romantic Comedy",
+            "Dark Comedy",
+            "Slapstick",
+            "Satire",
+            "Parody",
+            "Screwball",
+            "Stand-up Comedy",
+            "Mockumentary",
+            "Spoof",
+            "Others"
+          ]
+        },
+        {
+          "name": "Drama",
+          "subCategories": [
+            "Historical",
+            "Biographical",
+            "Legal",
+            "Crime",
+            "Family Drama",
+            "Psychological",
+            "Tragedy",
+            "Mystery",
+            "Supernatural",
+            "Others"
+          ]
+        },
+        {
+          "name": "Science Fiction",
+          "subCategories": [
+            "Space Opera",
+            "Time Travel",
+            "Dystopian",
+            "Cyberpunk",
+            "Alien Invasion",
+            "Robotics",
+            "Alternate History",
+            "Apocalyptic",
+            "Hard Science Fiction",
+            "Others"
+          ]
+        },
+        {
+          "name": "Fantasy",
+          "subCategories": [
+            "Epic Fantasy",
+            "High Fantasy",
+            "Sword and Sorcery",
+            "Urban Fantasy",
+            "Magical Realism",
+            "Fairy Tale",
+            "Dark Fantasy",
+            "Mythological Fantasy",
+            "Historical Fantasy",
+            "Others"
+          ]
+        }
+      ],
       "image_url": "/images/Movies&DVDs.webp"
     },
     {
-      "name": "Others",
+      "category": "Others",
       "image_url": "/images/others.png"
     }
   ]

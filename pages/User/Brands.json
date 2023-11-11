@@ -1,0 +1,278 @@
+{
+  "brands": [
+    {
+      "Category": "Electronics",
+      "brands": [
+        "Samsung",
+        "Apple",
+        "Sony",
+        "LG",
+        "Panasonic",
+        "Dell",
+        "HP",
+        "Canon",
+        "Nikon",
+        "Bose",
+        "Philips",
+        "Microsoft",
+        "Lenovo",
+        "ASUS",
+        "Fitbit",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Clothes",
+      "brands": [
+        "Nike",
+        "Adidas",
+        "Zara",
+        "H&M",
+        "Gucci",
+        "Levi's",
+        "Calvin Klein",
+        "Tommy Hilfiger",
+        "Puma",
+        "Under Armour",
+        "Forever 21",
+        "Gap",
+        "Ralph Lauren",
+        "Vans",
+        "Converse",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Furniture",
+      "brands": [
+        "IKEA",
+        "Ashley Furniture",
+        "Rooms To Go",
+        "Wayfair",
+        "Ethan Allen",
+        "La-Z-Boy",
+        "Bob's Discount Furniture",
+        "Crate & Barrel",
+        "Pottery Barn",
+        "West Elm",
+        "Havertys",
+        "Raymour & Flanigan",
+        "Broyhill",
+        "Sauder",
+        "Stanley Furniture",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Video Games",
+      "brands": [
+        "Nintendo",
+        "Sony PlayStation",
+        "Microsoft Xbox",
+        "EA Sports",
+        "Ubisoft",
+        "Activision",
+        "Bethesda",
+        "Rockstar Games",
+        "Square Enix",
+        "Capcom",
+        "Valve",
+        "Sega",
+        "2K Games",
+        "Razer",
+        "Corsair",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Sports & Outdoors",
+      "brands": [
+        "Nike",
+        "Adidas",
+        "Under Armour",
+        "The North Face",
+        "Columbia Sportswear",
+        "Patagonia",
+        "Arc'teryx",
+        "Merrell",
+        "REI Co-op",
+        "Cabela's",
+        "Marmot",
+        "Oakley",
+        "Salomon",
+        "Osprey",
+        "Yeti",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Books & Magazines",
+      "brands": [
+        "Penguin Random House",
+        "HarperCollins",
+        "Simon & Schuster",
+        "Hachette Book Group",
+        "Macmillan Publishers",
+        "Scholastic",
+        "Pearson",
+        "Oxford University Press",
+        "National Geographic",
+        "Time Magazine",
+        "The New Yorker",
+        "Vogue",
+        "National Review",
+        "Cosmopolitan",
+        "Rolling Stone",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Collectibles",
+      "brands": [
+        "Currency",
+        "Funko",
+        "LEGO",
+        "Hasbro",
+        "Hot Wheels",
+        "McFarlane Toys",
+        "Sideshow Collectibles",
+        "NECA",
+        "Bandai",
+        "DC Collectibles",
+        "Marvel Collectibles",
+        "Weta Workshop",
+        "Kidrobot",
+        "Mattel",
+        "Playmobil",
+        "Tamashii Nations",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Home & Garden",
+      "brands": [
+        "Cuisinart",
+        "KitchenAid",
+        "Dyson",
+        "Shark",
+        "Nespresso",
+        "Keurig",
+        "iRobot",
+        "Lowe's",
+        "Home Depot",
+        "Williams-Sonoma",
+        "Pier 1 Imports",
+        "Bed Bath & Beyond",
+        "Pottery Barn",
+        "Crate & Barrel",
+        "West Elm",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Musical Instruments",
+      "brands": [
+        "Fender",
+        "Gibson",
+        "Yamaha",
+        "Roland",
+        "Korg",
+        "Casio",
+        "Taylor Guitars",
+        "Martin Guitar",
+        "Pearl Drums",
+        "Sabian",
+        "M-Audio",
+        "Shure",
+        "AKG",
+        "Sennheiser",
+        "Boss",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Antiques",
+      "brands": [
+        "Christie's",
+        "Sotheby's",
+        "Bonhams",
+        "Heritage Auctions",
+        "Phillips",
+        "Skinner",
+        "Freeman's",
+        "Wright Auctions",
+        "Swann Auction Galleries",
+        "Hindman",
+        "Rago",
+        "Quinns Auction Galleries",
+        "Lyon & Turnbull",
+        "Paddle8",
+        "Treadway Toomey Auctions",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Computers & Accessories",
+      "brands": [
+        "Apple",
+        "Dell",
+        "HP",
+        "Lenovo",
+        "ASUS",
+        "Acer",
+        "Microsoft",
+        "Logitech",
+        "Samsung",
+        "Sony",
+        "Toshiba",
+        "Razer",
+        "Corsair",
+        "Intel",
+        "AMD",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Automotive",
+      "brands": [
+        "Toyota",
+        "Ford",
+        "Chevrolet",
+        "Honda",
+        "Volkswagen",
+        "BMW",
+        "Mercedes-Benz",
+        "Tesla",
+        "Audi",
+        "Hyundai",
+        "Nissan",
+        "Subaru",
+        "Jeep",
+        "Lexus",
+        "Mazda",
+        "Others"
+      ]
+    },
+    {
+      "Category": "Movies & DVDs",
+      "brands": [
+        "Disney",
+        "Warner Bros.",
+        "Universal Pictures",
+        "Paramount Pictures",
+        "Sony Pictures",
+        "20th Century Studios",
+        "Lionsgate",
+        "DreamWorks",
+        "MGM",
+        "Miramax",
+        "Focus Features",
+        "Criterion Collection",
+        "A24",
+        "Studio Ghibli",
+        "Criterion",
+        "Others"
+      ]
+    }
+  ]
+}

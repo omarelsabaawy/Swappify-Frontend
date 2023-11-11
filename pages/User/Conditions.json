@@ -1,0 +1,29 @@
+{
+    "conditions": [
+        {
+            "title": "New",
+            "description": "New with tags. Unopened packaging. Unused.",
+            "shortDescription": "Brand New"
+        },
+        {
+            "title": "Like new",
+            "description": "New without tags. No signs of used. Unused.",
+            "shortDescription": "Like New"
+        },
+        {
+            "title": "Good",
+            "description": "Gently used. One/few minor flaws.",
+            "shortDescription": "Good Condition"
+        },
+        {
+            "title": "Fair",
+            "description": "Used with multiple flaws & defects.",
+            "shortDescription": "Fair Condition"
+        },
+        {
+            "title": "Poor",
+            "description": "Major flaws, may be damaged.",
+            "shortDescription": "Poor Condition"
+        }
+    ]
+}

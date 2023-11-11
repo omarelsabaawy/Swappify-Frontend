@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import DragAndDrop from '../../components/Add-Items/DragAndDrop';
-import {  Button, Card, Container, Dropdown, Grid, Input, Row, Spacer, Text, Textarea } from '@nextui-org/react'
+import React, { useEffect, useRef, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { Button, Card, Container, Dropdown, Grid, Input, Row, Spacer, Text, Textarea } from '@nextui-org/react'
 import { useRouter } from 'next/router';
 import TopLogo from './TopLogo';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
@@ -9,70 +9,199 @@ import { TagsInput } from "@enipx/react-tags-input";
 
 import categoriesData from './Categories.json';
 import colorsData from './Colors.json';
+import conditionsData from './Conditions.json';
+import brandsData from "./Brands.json";
+
+const thumbsContainer: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginTop: 16,
+  alignContent: 'center',
+  justifyItems: 'center',
+  justifyContent: 'center',
+  alignItems: 'center',
+  alignSelf: 'center'
+};
+
+const thumb: React.CSSProperties = {
+  display: 'inline-flex',
+  borderRadius: 2,
+  border: '1px solid #444', // Dark border color
+  marginBottom: 8,
+  marginRight: 8,
+  width: "auto",
+  height: 100,
+  padding: 4,
+  boxSizing: 'border-box',
+  backgroundColor: '#222', // Dark background color
+  position: 'relative',
+};
+
+const thumbInner: React.CSSProperties = {
+  display: 'flex',
+  minWidth: 0,
+  overflow: 'hidden',
+};
+
+const img: React.CSSProperties = {
+  display: 'block',
+  width: 'auto',
+  height: '100%',
+};
+
+const closeBtn: React.CSSProperties = {
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  backgroundColor: 'red',
+  color: 'white',
+  borderRadius: '50%',
+  width: '20px',
+  height: '20px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  cursor: 'pointer',
+};
+
+const dropzoneContainer: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '250px', // Adjust the height as needed
+  border: '3px solid #262626', // Dashed purple border
+  borderRadius: '1rem',
+  cursor: 'pointer',
+  alignContent: 'center',
+  justifyItems: 'center',
+  alignSelf: 'center',
+  textAlign: 'center'
+};
 
 function List_New_Item() {
 
   const router = useRouter();
-
+  
+  const [files, setFiles] = useState<any[]>([]);
   const [hashTags, setHashTags] = useState<any[]>([]);
+  const [selected, setSelected] = useState("Swap");
+  const [selectedCondition, setSelectionCondition] = useState<any>("");
+  const [selectColor, setSelectColor] = useState<any>("");
+  const [category, setCategory] = useState<any>("");
+  const [subCategory, setSubCategory] = useState<any>("");
+  const [showSubCategory, setShowSubCategory] = useState<boolean>(false);
+  const [showSubSubCategory, setShowSubSubCategory] = useState<boolean>(false);
+  const [subSubCategory, setSubSubCategory] = useState<any>("");
+  const [subCategories, setSubCategories] = useState<any>([]);
+  const [subSubCategories, setSubSubCategories] = useState<any>([]);
+  const [brand, setBrand] = useState<any>("");
+  let CategoryBrands: string[] = [];
 
   const handleBackButtonClick = () => {
     router.back();
   };
 
-  const [selected, setSelected] = React.useState(new Set(["Swap"]));
-
-  const selectedValue = React.useMemo(
-    () => Array.from(selected).join(", ").replaceAll("_", " "),
-    [selected]
-  );
-
   const handleSelectionChange = (newSelection: any) => {
-    setSelected(newSelection); // Update the 'selected' state with the new selection
+    setSelected(newSelection.values().next().value);
   };
 
-  const conditionData = [
-    {
-      title: 'New',
-      description: 'New with tags. Unopened packaging. Unused.',
-      shortDescription: 'Brand New',
-    },
-    {
-      title: 'Like new',
-      description: 'New without tags. No signs of used. Unused.',
-      shortDescription: 'Like New',
-    },
-    {
-      title: 'Good',
-      description: 'Gently used. One/few minor flaws.',
-      shortDescription: 'Good Condition',
-    },
-    {
-      title: 'Fair',
-      description: 'Used with multiple flaws & defects.',
-      shortDescription: 'Fair Condition',
-    },
-    {
-      title: 'Poor',
-      description: 'Major flaws, may be damaged.',
-      shortDescription: 'Poor Condition',
-    },
-  ];
+  const handleCategoryChange = (newSelection: any) => {
+    const selectedCategory = Array.from(newSelection)[0];
+    const selectedCategoryObject = categories.find((category) => category.category === selectedCategory);
 
+    setCategory(selectedCategory);
+    setSubCategory(""); // Reset the subcategory when the category changes
+    setSubSubCategory(""); // Reset the subsubcategory when the category changes
+    setSubCategories(selectedCategoryObject?.subCategories || []);
+    setShowSubCategory(selectedCategory !== "Others" ? true : false);
+    setSubSubCategories([]); // Reset the subsubcategories when the category changes
+  };
 
-  const [selectedCondition, setSelectionCondition] = useState<any>("");
-  const [selectColor, setSelectColor] = useState<any>("");
+  const handleSubCategoryChange = (newSelection: any) => {
+    const selectedSubCategory = Array.from(newSelection)[0];
+    const selectedSubCategoryObject = subCategories.find((subCategory: any) => subCategory.name === selectedSubCategory);
+    setSubCategory(selectedSubCategory);
+    setShowSubSubCategory(true);
+    setSubSubCategory(""); // Reset the subsubcategory when the subcategory changes
+    setSubSubCategories(selectedSubCategoryObject?.subCategories || []); // Change to subCategories
+  };
 
-  const handleColorSelection = (newSelection: any) => {
-    selectColor(newSelection.name);
-  }
+  const handleSubSubCategoryChange = (newSelection: any) => {
+    const selectedSubSubCategory = Array.from(newSelection)[0];
+    setSubSubCategory(selectedSubSubCategory);
+  };
 
+  const conditions = conditionsData.conditions;
   const categories = categoriesData.categories;
   const colors = colorsData.colors;
+  const brands = brandsData.brands;
 
+  if (category !== "") {
+    const filterBrands = brands.filter((brand) => brand.Category === category);
+    CategoryBrands = filterBrands[0]?.brands || []; // Assign value inside the block
+  }
+
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      'image/*': []
+    },
+    onDrop: (acceptedFiles: any[]) => {
+      if (files.length + acceptedFiles.length > 5) {
+        // You can display a message or alert the user that they have reached the limit
+        alert('Maximum images allowed are 5.');
+      } else {
+        setFiles((prevFiles) => [
+          ...prevFiles,
+          ...acceptedFiles.map((file) => Object.assign(file, { preview: URL.createObjectURL(file) })),
+        ]);
+      }
+    },
+});
+
+
+  const removeFile = (index: number) => {
+    const updatedFiles = [...files];
+    updatedFiles.splice(index, 1);
+    setFiles(updatedFiles);
+  };
+
+  const thumbs = files.map((file, index) => (
+    <div style={thumb} key={file.name}>
+      <div style={thumbInner}>
+        <img 
+          src={file.preview}
+          style={img}
+          onLoad={() => {
+            URL.revokeObjectURL(file.preview);
+          }}
+          alt={file.name}
+        />
+      </div>
+      <div style={closeBtn} onClick={() => removeFile(index)}>
+        X
+      </div>
+    </div>
+  ));
+
+  useEffect(() => {
+    // Make sure to revoke the data URIs to avoid memory leaks, will run on unmount
+    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+  }, [files]);
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // Function to trigger the input click event
+  const triggerInputClick = () => {
+    if (inputRef.current) {
+      inputRef.current.click();
+    }
+  };
 
   return (
-    <Container css={{height: "2000px",maxWidth: '100%', margin: 0, padding: 0, marginBottom: '5%',}}>
+    <Container css={{height: "1400px",maxWidth: '100%', margin: 0, padding: 0, marginBottom: '5%',}}>
       <Container css={{ maxWidth: '100%', height: '50px', backgroundColor: '$secondary', paddingTop: '$3', position: 'relative' }}>
         <Container css={{ display: 'flex', alignItems: 'center', justifyContent: 'center', "@smMax":{display: 'none'}}}>
           <span><TopLogo /></span>
@@ -83,7 +212,6 @@ function List_New_Item() {
         </Container>
         <div style={{
         position: 'absolute', bottom: '4px', left: '0',
-        // left: '0.5%',
         zIndex: '1',
         backgroundColor: 'transparent',
         cursor: 'pointer',
@@ -135,7 +263,7 @@ function List_New_Item() {
           {/* Right Corner - Inner Container */}
             <Dropdown placement="bottom-right">
               <Dropdown.Button shadow color="secondary" css={{ textTransform: "capitalize" }}>
-                {selectedValue}
+                {selected}
               </Dropdown.Button>
               <Dropdown.Menu
                 aria-label="Single selection actions"
@@ -154,7 +282,23 @@ function List_New_Item() {
           <Text h4 color='default' css={{marginLeft: '17%', "@smMax":{marginLeft: '$10'}}}>Photos :</Text>
         </Row>
         <Container css={{boxSizing: 'border-box', width: '70%',  marginTop: '1%', "@smMax":{ maxWidth: '100%', width: '100%', marginTop: '1%',}}}>
-          <DragAndDrop />
+          <section className="container">
+            <div style={dropzoneContainer} {...getRootProps()}>
+              {/* Use the inputRef to get a reference to the input element */}
+              <input type='file' accept='image/*' {...getInputProps()} ref={inputRef} />
+              <Button
+                auto
+                color={'secondary'}
+                css={{borderRadius: '$sm'}}
+                onClick={triggerInputClick} // Trigger the click event on button click
+              >
+                Upload photos
+              </Button>
+              <Spacer y={0.5} />
+              <Text color='secondary'>Or drag and drop up to 5 photos</Text>
+            </div>
+            <aside style={thumbsContainer}>{thumbs}</aside>
+          </section>
         </Container>
           <Container css={{boxSizing: 'border-box', width: '70%',  marginTop: '1%', "@smMax":{  width: '100%', marginTop: '1%',}}}>
             <Text h4 css={{marginTop: '$3', marginBottom: '$8', "@smMax": { marginLeft: '$1', } }}>Product Info :</Text>
@@ -220,58 +364,64 @@ function List_New_Item() {
             <Grid.Container css={{ display: 'flex', margin: '0', marginLeft: '0', padding: '0', paddingLeft: '0'}} gap={1}>
               <Grid lg={6} md={6} xs={12}>
                 <Dropdown placement="bottom">
-                  <Dropdown.Button css={{ visibility: 'visible', width: '100%', height: '45px', backgroundColor: 'black', border: '3px solid #262626'}}>
-                    Select category
+                  <Dropdown.Button css={{ visibility: 'visible', width: '100%', height: '45px', backgroundColor: 'transparent', border: '3px solid #262626'}}>
+                    {category ? `${category}` : "Select category"}
                   </Dropdown.Button>
                   <Dropdown.Menu
                     aria-label="Single selection actions"
                     disallowEmptySelection
                     selectionMode="single"
-                    selectedKeys={selected}
-                    onSelectionChange={handleSelectionChange}
+                    selectedKeys={category}
+                    onSelectionChange={handleCategoryChange}
                   >
                     {categories.map((category) => (
-                      <Dropdown.Item key={category.name}>{category.name}</Dropdown.Item>
+                      <Dropdown.Item key={category.category}>{category.category}</Dropdown.Item>
                     ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Grid>
               
-              <Grid lg={6} md={6} xs={12}>
-              <Dropdown placement="bottom">
-                  <Dropdown.Button css={{  width: '100%', height: '45px', backgroundColor: 'black', border: '3px solid #262626' }}>
-                    Select subcategory
-                  </Dropdown.Button>
-                  <Dropdown.Menu
-                    aria-label="Single selection actions"
-                    disallowEmptySelection
-                    selectionMode="single"
-                    selectedKeys={selected}
-                    onSelectionChange={handleSelectionChange}
-                  >
-                    <Dropdown.Item key="Swap" description='Want to Swap this Item'>Swap</Dropdown.Item>
-                    <Dropdown.Item key="Sell" description='Want to Sell this Item'>Sell</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Grid>
-
-              <Grid lg={6} md={6} xs={12}>
+              {showSubCategory && (
+                <Grid lg={6} md={6} xs={12}>
                 <Dropdown placement="bottom">
-                  <Dropdown.Button css={{  width: '100%', height: '45px', backgroundColor: 'black', border: '3px solid #262626' }}>
-                    Select subcategory
+                  <Dropdown.Button css={{ width: '100%', height: '45px', backgroundColor: 'transparent', border: '3px solid #262626' }}>
+                    {subCategory ? `${subCategory}` : "Select subcategory"}
                   </Dropdown.Button>
                   <Dropdown.Menu
                     aria-label="Single selection actions"
                     disallowEmptySelection
                     selectionMode="single"
-                    selectedKeys={selected}
-                    onSelectionChange={handleSelectionChange}
+                    selectedKeys={subCategory}
+                    onSelectionChange={handleSubCategoryChange}
                   >
-                    <Dropdown.Item key="Swap" description='Want to Swap this Item'>Swap</Dropdown.Item>
-                    <Dropdown.Item key="Sell" description='Want to Sell this Item'>Sell</Dropdown.Item>
+                    {subCategories.map((subCategory: any) => (
+                      <Dropdown.Item key={subCategory.name}>{subCategory.name}</Dropdown.Item>
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Grid>
+              )}
+
+              {showSubSubCategory && (
+                <Grid lg={6} md={6} xs={12}>
+                <Dropdown placement="bottom">
+                  <Dropdown.Button css={{ width: '100%', height: '45px', backgroundColor: 'transparent', border: '3px solid #262626' }}>
+                    {subSubCategory ? `${subSubCategory}` : "Select subsubcategory"}
+                  </Dropdown.Button>
+                  <Dropdown.Menu
+                    aria-label="Single selection actions"
+                    disallowEmptySelection
+                    selectionMode="single"
+                    selectedKeys={subSubCategory}
+                    onSelectionChange={handleSubSubCategoryChange}
+                  >
+                    {subSubCategories.map((subSubCategory: any) => (
+                      <Dropdown.Item key={subSubCategory}>{subSubCategory}</Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Grid>
+              )}
 
             </Grid.Container>
           </Grid>
@@ -279,7 +429,7 @@ function List_New_Item() {
             <label style={{ marginLeft: '5px', fontSize: '14px'}}>Conditions</label>
             <Container css={{ padding: '0', margin: '0', "@smMax": { display: 'none' } }}>
               <Grid.Container css={{ padding: '0', margin: '0', marginTop: '$2' }} gap={0.7}>
-                {conditionData.map((condition, index) => (
+                {conditions.map((condition, index) => (
                   <Grid xs={2.4} key={index}>
                     <Card isPressable isHoverable onPress={() => setSelectionCondition(condition.title)} variant='bordered'
                       css={{
@@ -300,7 +450,7 @@ function List_New_Item() {
             </Container>
             <Container css={{ width: '100%', marginLeft: '6px',"@lgMax":{display: 'none'}, "@smMax":{display: 'flex', padding: '$0'}}}>
               <Dropdown placement="bottom">
-                  <Dropdown.Button css={{  width: '100%', height: '45px', backgroundColor: 'black', border: '3px solid #262626' }}>
+                  <Dropdown.Button css={{  width: '100%', height: '45px', backgroundColor: 'transparent', border: '3px solid #262626' }}>
                   { selectedCondition ? selectedCondition : "Select Item Conditions"}
                   </Dropdown.Button>
                   <Dropdown.Menu
@@ -313,7 +463,7 @@ function List_New_Item() {
                       setSelectionCondition(selectedCondition); // Update the selected condition in the state
                     }}
                   >
-                    {conditionData.map((condition, index) => (
+                    {conditions.map((condition, index) => (
                       <Dropdown.Item key={condition.title} description={condition.shortDescription}>
                         {condition.title}
                       </Dropdown.Item>
@@ -327,7 +477,7 @@ function List_New_Item() {
             <label style={{ marginLeft: '5px', fontSize: '14px' }}>Color </label>
             <Dropdown placement="bottom">
               <Dropdown.Button
-                css={{ width: '100%', height: '45px', marginLeft: "5px", backgroundColor: selectColor ? `${selectColor}` : "black" , border: '3px solid #262626', marginTop: "$3" }}
+                css={{ width: '100%', height: '45px', backgroundColor: selectColor ? `${selectColor}` : "black" , border: '3px solid #262626', marginTop: "$3" }}
               >
                 {!selectColor ? "Select the item Color" : selectColor}
               </Dropdown.Button>
@@ -360,7 +510,55 @@ function List_New_Item() {
           </Grid>
           <Spacer />
           <Grid>
-
+            {category !== "Others" ?
+              (
+                <>
+                  <label style={{ marginLeft: '5px', fontSize: '14px' }}>Brand </label>
+                  <Dropdown placement="bottom">
+                    <Dropdown.Button
+                      css={{ width: '100%', height: '45px', backgroundColor: "transparent" ,border: '3px solid #262626', marginTop: "$3" }}
+                    >
+                      {!brand ? "Select the Brand" : brand}
+                    </Dropdown.Button>
+                    <Dropdown.Menu
+                      aria-label="Brand selection"
+                      disallowEmptySelection
+                      selectionMode="single"
+                      onSelectionChange={(newSelected) => {
+                        const selectedBrand = Array.from(newSelected)[0]; // Get the selected condition
+                        setBrand(selectedBrand); // Update the selected condition in the state
+                      }}
+                    >
+                      {CategoryBrands.map((brand) => (
+                        <Dropdown.Item key={brand}>
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <div>{brand}</div>
+                          </div>
+                        </Dropdown.Item>
+                      ))}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </>
+              ) : (
+                <>
+                  <Input
+                    label="Brand"
+                    borderWeight='bold'
+                    aria-label='Brand'
+                    placeholder="What is the item's brand?"
+                    maxLength={80}
+                    fullWidth
+                    bordered
+                    clearable
+                  />
+                </>
+              )}
+          </Grid>
+          <Spacer />
+          <Grid>
+            <Container css={{ display: 'flex', justifyContent: 'center' }}>
+              <Button shadow color={"secondary"} css={{width:"50%", textTransform: "capitalize"}}>Add the item</Button>
+            </Container>
           </Grid>
         </Container>
       </Container>
